@@ -1,0 +1,299 @@
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
+import ourExhibitorsImg from "@/assets/dagenipic3.jpg";
+
+const OurExhibitors = () => {
+  // Main Partner
+  const mainPartner = {
+    name: "Exhibitor",
+    website: "https://navigio.eu/",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    isMainPartner: true
+  };
+
+  // Sustainability Partners
+  const sustainabilityPartners = [
+    {
+      name: "Exhibitor",
+      website: "https://www.handinhandsweden.se/",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.gainuk.org/",
+      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore."
+    }
+  ];
+
+  // Main Exhibitors
+  const exhibitors = [
+    {
+      name: "Exhibitor",
+      website: "https://www.abgsc.com/",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vehicula, nulla ut consequat tempor, magna lorem tempus purus."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.drakeanalytics.se/",
+      description: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec auctor blandit quam."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.if.se/privat",
+      description: "Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://kpmg.com/xx/en.html",
+      description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.sareqinvest.se/",
+      description: "Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.niam.se/",
+      description: "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.capgemini.com/se-en/",
+      description: "Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui. Cum sociis natoque penatibus."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.lidl.se/",
+      description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://claessonpartners.se/",
+      description: "Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod lorem ipsum."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://echostate.se/",
+      description: "Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://implementconsultinggroup.com/",
+      description: "Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla vitae."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.mcfcorpfin.com/",
+      description: "Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.visma.se/",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://osttra.com/",
+      description: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus mauris vehicula."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.allshares.com/",
+      description: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo tortor."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://curamando.com/sv/",
+      description: "Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui lorem ipsum dolor sit amet."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://valcon.com/sv/",
+      description: "Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www2.deloitte.com/se/sv.html",
+      description: "Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.ey.com/sv_se",
+      description: "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://keytogroup.com/sv",
+      description: "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum mauris blandit aliquet."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.paretosec.se/",
+      description: "Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac vestibulum."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.bnpparibas.se/en/",
+      description: "Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum lorem ipsum dolor."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.pwc.se/",
+      description: "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.ericsson.com/en",
+      description: "Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo donec."
+    },
+    {
+      name: "Exhibitor",
+      website: "https://www.sverigesingenjorer.se/",
+      description: "Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <div className="pt-20">
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img src={ourExhibitorsImg} alt="Exhibition hall" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center animate-fade-in">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display mb-6">
+              <span className="text-foreground/80">
+                Our Exhibitors
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              Meet the companies shaping the future of technology
+            </p>
+          </div>
+        </section>
+
+        {/* Content Section */}
+        <section className="py-16 sm:py-20 md:py-24">
+          <div className="container mx-auto px-4 sm:px-6">
+            <Link to="/">
+              <Button variant="ghost" className="mb-8 group">
+                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+                Back to Home
+              </Button>
+            </Link>
+
+            <div className="max-w-6xl mx-auto space-y-12 animate-fade-in-up">
+              {/* Introduction */}
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Below, you'll find a list of all exhibitors at Dagen I 2026. Explore and learn more about the companies and what they offer!
+                </p>
+              </div>
+
+              {/* Main Partner */}
+              <div className="mb-16">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
+                  <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                    Our Main Partner — {mainPartner.name}
+                  </span>
+                </h2>
+                <div className="block p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 border border-primary/30 hover:border-primary/50 transition-all shadow-card hover:shadow-glow group">
+                  <h3 className="text-2xl font-bold font-display mb-4 text-foreground group-hover:text-primary transition-colors">
+                    {mainPartner.name}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">{mainPartner.description}</p>
+                  <div className="text-primary group-hover:underline">
+                    Visit Website →
+                  </div>
+                </div>
+              </div>
+
+              {/* Sustainability Partners */}
+              <div className="mb-16">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
+                  <span className="bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
+                    Our Sustainability Partners
+                  </span>
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {sustainabilityPartners.map((partner, index) => (
+                    <div
+                      key={index}
+                      className="group p-6 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-border/50 hover:border-secondary/50 transition-all shadow-card hover:shadow-glow"
+                    >
+                      <h3 className="text-xl font-bold font-display mb-3 text-foreground group-hover:text-secondary transition-colors">
+                        {partner.name}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{partner.description}</p>
+                      <div className="text-secondary text-sm group-hover:underline">
+                        Visit Website →
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Main Exhibitors */}
+              <div className="mb-16">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
+                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    Our Exhibitors
+                  </span>
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {exhibitors.map((exhibitor, index) => (
+                    <div
+                      key={index}
+                      className="group p-6 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-border/50 hover:border-primary/50 transition-all shadow-card hover:shadow-glow"
+                    >
+                      <h3 className="text-lg font-bold font-display mb-3 text-foreground group-hover:text-primary transition-colors">
+                        {exhibitor.name}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{exhibitor.description}</p>
+                      <div className="text-primary text-sm group-hover:underline">
+                        Visit Website →
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Thank You Message */}
+              <div className="text-center py-12 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl border border-primary/20">
+                <h3 className="text-2xl sm:text-3xl font-bold font-display mb-4 text-foreground">
+                  A big thank you to all our exhibitors for being part of Dagen I 2026!
+                </h3>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Your participation helps make this event an inspiring platform for innovation, collaboration, and growth. We're excited to have you on this journey and look forward to seeing all the connections and ideas that will come to life!
+                </p>
+              </div>
+
+              {/* Call to Action */}
+              <div className="text-center py-8">
+                <Link to="/">
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all">
+                    Return to Homepage
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default OurExhibitors;
