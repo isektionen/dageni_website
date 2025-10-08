@@ -48,39 +48,37 @@ export const Navigation = () => {
                 </Button>
               </Link>
               {/* Dropdown content that appears on hover */}
-              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-1">
-                  <Link 
-                    to="/our-exhibitors" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Our exhibitors
-                  </Link>
-                  <Link 
-                    to="/for-students#events" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Events
-                  </Link>
-                  <Link 
-                    to="/for-students#our-sponsors" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Our sponsors
-                  </Link>
-                  <Link 
-                    to="/for-students#contact-meetings" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Contact Meetings
-                  </Link>
-                  <Link 
-                    to="/for-students#become-a-host" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Become a host!
-                  </Link>
-                </div>
+              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                <Link 
+                  to="/our-exhibitors" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors first:pt-3 last:pb-3"
+                >
+                  Our exhibitors
+                </Link>
+                <Link 
+                  to="/for-students#events" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Events
+                </Link>
+                <Link 
+                  to="/for-students#our-sponsors" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Our sponsors
+                </Link>
+                <Link 
+                  to="/for-students#contact-meetings" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Contact Meetings
+                </Link>
+                <Link 
+                  to="/for-students#become-a-host" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors first:pt-3 last:pb-3"
+                >
+                  Become a host!
+                </Link>
               </div>
             </div>
 
@@ -92,21 +90,19 @@ export const Navigation = () => {
                 </Button>
               </Link>
               {/* Dropdown content that appears on hover */}
-              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-1">
-                  <Link 
-                    to="/for-companies#packages" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Exhibition Packages
-                  </Link>
-                  <Link 
-                    to="/for-companies#become-a-partner" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    Become a partner
-                  </Link>
-                </div>
+              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                <Link 
+                  to="/for-companies#packages" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors first:pt-3 last:pb-3"
+                >
+                  Exhibition Packages
+                </Link>
+                <Link 
+                  to="/for-companies#become-a-partner" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors first:pt-3 last:pb-3"
+                >
+                  Become a partner
+                </Link>
               </div>
             </div>
 

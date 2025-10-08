@@ -87,13 +87,13 @@ const ForStudents = () => {
 
               {/* Contact Meetings */}
               <section id="contact-meetings" className="scroll-mt-24">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-6">
                   <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     Contact Meetings
                   </span>
                 </h2>
                 
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   During the fair day you will be offered contact meetings. These are simply conversations for about 20 minutes where you have the opportunity to talk to company representatives in calm. They can either be more focused on future jobs or more of a chance to ask someone in working life what to think about during their studies, what a normal working day looks like, what it thinks is important when looking for a job and more. You decide for yourself, but they are in any case eager to meet, regardless of grade!
                 </p>
                 
