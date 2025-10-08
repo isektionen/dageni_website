@@ -1,6 +1,7 @@
-import { Calendar, Facebook, Instagram, Linkedin, Menu, X, Building2, GraduationCap, Briefcase, Users } from "lucide-react";
+import { Calendar, Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useState } from "react";
 
 export const Navigation = () => {
@@ -39,6 +40,87 @@ export const Navigation = () => {
           </Link>
           
           <div className="hidden lg:flex items-center space-x-1">
+            {/* For Students with hover dropdown */}
+            <div className="relative group">
+              <Link to="/for-students">
+                <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
+                  For Students
+                </Button>
+              </Link>
+              {/* Dropdown content that appears on hover */}
+              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-1">
+                  <Link 
+                    to="/our-exhibitors" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Our exhibitors
+                  </Link>
+                  <Link 
+                    to="/for-students#events" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Events
+                  </Link>
+                  <Link 
+                    to="/for-students#our-sponsors" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Our sponsors
+                  </Link>
+                  <Link 
+                    to="/for-students#contact-meetings" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Contact Meetings
+                  </Link>
+                  <Link 
+                    to="/for-students#become-a-host" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Become a host!
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* For Companies with hover dropdown */}
+            <div className="relative group">
+              <Link to="/for-companies">
+                <Button variant="ghost" className="text-foreground/80 hover:text-foreground">
+                  For Companies
+                </Button>
+              </Link>
+              {/* Dropdown content that appears on hover */}
+              <div className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-1">
+                  <Link 
+                    to="/for-companies#packages" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Exhibition Packages
+                  </Link>
+                  <Link 
+                    to="/for-companies#become-a-partner" 
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  >
+                    Become a partner
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* About us */}
+            <Link to="/about-us">
+              <Button
+                variant="ghost"
+                className="text-foreground/80 hover:text-foreground"
+              >
+                About us
+              </Button>
+            </Link>
+
+            {/* Location */}
             <a 
               href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
               target="_blank"
@@ -51,60 +133,6 @@ export const Navigation = () => {
                 Location
               </Button>
             </a>
-            
-            <Link to="/for-students">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                For Students
-              </Button>
-            </Link>
-            
-            <Link to="/for-exhibitors">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                For Exhibitors
-              </Button>
-            </Link>
-            
-            <Link to="/our-exhibitors">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                Our Exhibitors
-              </Button>
-            </Link>
-            
-            <Link to="/about-us">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                About Us
-              </Button>
-            </Link>
-            
-            <Link to="/events">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                Events
-              </Button>
-            </Link>
-            
-            <Link to="/our-sponsors">
-              <Button
-                variant="ghost"
-                className="text-foreground/80 hover:text-foreground"
-              >
-                Our Sponsors
-              </Button>
-            </Link>
           </div>
 
           <div className="flex items-center space-x-2 sm:space-x-3">
@@ -145,73 +173,55 @@ export const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden border-t border-border/50 bg-background/95 backdrop-blur-lg">
             <div className="container mx-auto px-4 sm:px-6 py-4 space-y-2">
-              <a 
-                href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleLinkClick}
-              >
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  Location
-                </Button>
-              </a>
-              
+              {/* For Students group */}
               <Link to="/for-students" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  For Students
-                </Button>
+                <Button variant="ghost" className="w-full justify-start font-semibold text-primary">For Students</Button>
               </Link>
-              
-              <Link to="/for-exhibitors" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  For Exhibitors
-                </Button>
+              <div className="ml-4 space-y-1">
+                <Link to="/our-exhibitors" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Our exhibitors</Button>
+                </Link>
+                <Link to="/for-students#events" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Events</Button>
+                </Link>
+                <Link to="/for-students#our-sponsors" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Our sponsors</Button>
+                </Link>
+                <Link to="/for-students#contact-meetings" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Contact Meetings</Button>
+                </Link>
+                <Link to="/for-students#become-a-host" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Become a host!</Button>
+                </Link>
+              </div>
+
+              {/* Companies group */}
+              <Link to="/for-companies" onClick={handleLinkClick}>
+                <Button variant="ghost" className="w-full justify-start font-semibold text-primary mt-3">For Companies</Button>
               </Link>
-              
-              <Link to="/our-exhibitors" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
+              <div className="ml-4 space-y-1">
+                <Link to="/for-companies#packages" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Exhibition Packages</Button>
+                </Link>
+                <Link to="/for-companies#become-a-partner" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Become a partner</Button>
+                </Link>
+              </div>
+
+              {/* About & Location */}
+              <div className="mt-4 space-y-1">
+                <Link to="/about-us" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start font-semibold">About us</Button>
+                </Link>
+                <a 
+                  href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleLinkClick}
                 >
-                  Our Exhibitors
-                </Button>
-              </Link>
-              
-              <Link to="/about-us" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  About Us
-                </Button>
-              </Link>
-              
-              <Link to="/events" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  Events
-                </Button>
-              </Link>
-              
-              <Link to="/our-sponsors" onClick={handleLinkClick}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-foreground/80 hover:text-foreground"
-                >
-                  Our Sponsors
-                </Button>
-              </Link>
+                  <Button variant="ghost" className="w-full justify-start font-semibold">Location</Button>
+                </a>
+              </div>
             </div>
           </div>
         )}

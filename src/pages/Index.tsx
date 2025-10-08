@@ -6,10 +6,8 @@ import { SectionCard } from "@/components/SectionCard";
 import studentsHero from "@/assets/dagenipic1.jpg";
 import exhibitorsImg from "@/assets/dagenipic2.jpg";
 import ourExhibitorsImg from "@/assets/dagenipic3.jpg";
-import sponsorsImg from "@/assets/dagenipic4.jpg";
 import dageniLogo from "@/assets/dageni_profile_pic.jpg";
 import aboutUsImg from "@/assets/Dageni_group.png";
-import eventsImg from "@/assets/Dageni_eventpic.jpg";
 
 const Index = () => {
   return (
@@ -70,6 +68,39 @@ const Index = () => {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
       </section>
 
+      {/* About Dagen I Section */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h2 className="text-3xl sm:text-4xl font-bold font-display text-center">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                About Dagen I
+              </span>
+            </h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold font-display mb-3 text-foreground">What</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Dagen I is the annual career fair for Industrial Engineering and Management students, taking place at the end of January 2026. Since 2011, it has been a key event where students from the Master of Science in Engineering and Master's programs connect with potential employers. Dagen I provides opportunities to engage with industry and form relationships that can lead to future career prospects. It's a chance to gain exclusive insights into companies and prepare for life after graduation.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-bold font-display mb-3 text-foreground">Why</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>• <strong>Lunch Lectures:</strong> Hear from top companies and gain insights into their work and industry trends.</li>
+                  <li>• <strong>Banquet:</strong> Network in a formal yet relaxed setting with company representatives and fellow students.</li>
+                  <li>• <strong>Connect with Employers:</strong> Explore career paths and meet your future employers.</li>
+                  <li>• <strong>Relationship Building:</strong> Get to know professionals and better understand job market dynamics.</li>
+                  <li>• <strong>Contact Meetings:</strong> During the fair, join conversations with company representatives. Discuss future jobs or ask about working life.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Sections */}
       <section className="py-8 sm:py-12 md:py-16 relative">
         <div className="container mx-auto px-4 sm:px-6">
@@ -84,11 +115,11 @@ const Index = () => {
             />
             
             <SectionCard
-              id="exhibitors"
-              title="For Exhibitors"
-              description="Is your company interested in exhibiting at Dagen I? Discover more about the benefits of connecting with talented students, showcasing your company culture, and finding your next great hire at Sweden's premier student career fair."
+              id="companies"
+              title="For Companies"
+              description="Is your company interested in exhibiting or sponsoring Dagen I? Discover the benefits of connecting with talented students, showcasing your company culture, and finding your next great hire at Sweden's premier student career fair."
               image={exhibitorsImg}
-              link="/for-exhibitors"
+              link="/for-companies"
               gradient="secondary"
             />
           </div>
@@ -104,31 +135,11 @@ const Index = () => {
             />
             
             <SectionCard
-              id="sponsors"
-              title="Our Sponsors"
-              description="Here are the sponsors who make Dagen I possible. We're grateful for their support in creating this incredible opportunity for students and companies to connect and build meaningful professional relationships."
-              image={sponsorsImg}
-              link="/our-sponsors"
-              gradient="secondary"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-8 md:mt-12">
-            <SectionCard
               id="about-us"
               title="About Us"
               description="Meet the passionate team behind Dagen I and learn about our mission to connect talented engineering students with innovative companies across Sweden."
               image={aboutUsImg}
               link="/about-us"
-              gradient="primary"
-            />
-            
-            <SectionCard
-              id="events"
-              title="Events"
-              description="Discover the exciting events leading up to Dagen I 2026. From networking sessions to information meetings, there's something for everyone on the road to our main career fair."
-              image={eventsImg}
-              link="/events"
               gradient="secondary"
             />
           </div>

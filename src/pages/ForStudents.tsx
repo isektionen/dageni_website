@@ -1,11 +1,25 @@
 import { ArrowLeft, Users, Calendar, Briefcase, GraduationCap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import studentsHero from "@/assets/dagenipic1.jpg";
+import sponsorsImg from "@/assets/dagenipic4.jpg";
+import { useEffect } from "react";
 
 const ForStudents = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [hash]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -41,66 +55,38 @@ const ForStudents = () => {
             </Link>
 
             <div className="max-w-4xl mx-auto space-y-12 animate-fade-in-up">
-              {/* About Dagen I */}
-              <div className="space-y-8">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display text-center">
-                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    About Dagen I
-                  </span>
-                </h2>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">What</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Dagen I is the annual career fair for Industrial Engineering and Management students, taking place at the end of January 2026. Since 2011, it has been a key event where students from the Master of Science in Engineering and Master's programs connect with potential employers. Dagen I provides opportunities to engage with industry and form relationships that can lead to future career prospects. It's a chance to gain exclusive insights into companies and prepare for life after graduation.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">Why</h3>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li>• <strong>Lunch Lectures:</strong> Hear from top companies and gain insights into their work and industry trends.</li>
-                      <li>• <strong>Banquet:</strong> Network in a formal yet relaxed setting with company representatives and fellow students.</li>
-                      <li>• <strong>Connect with Employers:</strong> Explore career paths and meet your future employers.</li>
-                      <li>• <strong>Relationship Building:</strong> Get to know professionals and better understand job market dynamics.</li>
-                      <li>• <strong>Contact Meetings:</strong> During the fair, join conversations with company representatives. Discuss future jobs or ask about working life.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              {/* Our Exhibitors Section */}
+              <section id="exhibitors" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Our exhibitors</h2>
+                <p className="text-muted-foreground mb-6">Discover companies attending Dagen I.</p>
+                <Button asChild>
+                  <Link to="/our-exhibitors">Browse exhibitors</Link>
+                </Button>
+              </section>
 
-              {/* Become a Host */}
-              <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
-                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Become a host for Dagen I
-                  </span>
-                </h2>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">What is a company host?</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      As a host you will be responsible for the communication with a company before and after the fair. You will represent the chapter as the main contact person from our side and act as the company's helping hand when needed. The purpose is to make the communication and process smoother, for both parts.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">What's in it for you?</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      This is your chance to network and gain valuable contact, and more importantly, guarantee a spot at the closing banquet. There will also be a kickoff for all company hosts.
-                    </p>
-                  </div>
-                  
-                  <div className="text-center p-4 bg-accent/10 rounded-xl border border-accent/20">
-                    <p className="text-accent font-medium">The application to become a company host hasn't opened yet. Stay tuned!</p>
-                  </div>
+              {/* Events Section */}
+              <section id="events" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Events</h2>
+                <p className="text-muted-foreground">Talks, workshops, and activities during the fair.</p>
+                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20 mt-6">
+                  <p className="text-muted-foreground">Events leading up to Dagen I 2026 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
                 </div>
-              </div>
+              </section>
+
+              {/* Our Sponsors Section */}
+              <section id="our-sponsors" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Our sponsors</h2>
+                <div className="relative rounded-3xl overflow-hidden mb-8">
+                  <img src={sponsorsImg} alt="Sponsors" className="w-full h-60 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-transparent" />
+                </div>
+                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
+                  <p className="text-muted-foreground">Our sponsors for Dagen I 2026 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
+                </div>
+              </section>
 
               {/* Contact Meetings */}
-              <div className="space-y-6">
+              <section id="contact-meetings" className="scroll-mt-24">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-center">
                   <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     Contact Meetings
@@ -114,7 +100,38 @@ const ForStudents = () => {
                 <div className="text-center p-4 bg-secondary/10 rounded-xl border border-secondary/20">
                   <p className="text-secondary font-medium">The application for contact meetings hasn't opened yet. Stay tuned!</p>
                 </div>
-              </div>
+              </section>
+
+              {/* Become a Host */}
+              <section id="become-a-host" className="scroll-mt-24">
+                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
+                  <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
+                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                      Become a host for Dagen I
+                    </span>
+                  </h2>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-xl font-bold font-display mb-3 text-foreground">What is a company host?</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        As a host you will be responsible for the communication with a company before and after the fair. You will represent the chapter as the main contact person from our side and act as the company's helping hand when needed. The purpose is to make the communication and process smoother, for both parts.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-xl font-bold font-display mb-3 text-foreground">What's in it for you?</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        This is your chance to network and gain valuable contact, and more importantly, guarantee a spot at the closing banquet. There will also be a kickoff for all company hosts.
+                      </p>
+                    </div>
+                    
+                    <div className="text-center p-4 bg-accent/10 rounded-xl border border-accent/20">
+                      <p className="text-accent font-medium">The application to become a company host hasn't opened yet. Stay tuned!</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
               {/* Call to Action */}
               <div className="text-center py-8">

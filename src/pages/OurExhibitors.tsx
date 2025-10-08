@@ -195,85 +195,19 @@ const OurExhibitors = () => {
               {/* Introduction */}
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Below, you'll find a list of all exhibitors at Dagen I 2026. Explore and learn more about the companies and what they offer!
+                  Get ready to meet the companies that will be exhibiting at Dagen I 2026!
                 </p>
               </div>
 
-              {/* Main Partner */}
-              <div className="mb-16">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
-                  <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                    Our Main Partner — {mainPartner.name}
-                  </span>
-                </h2>
-                <div className="block p-8 rounded-3xl bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 border border-primary/30 hover:border-primary/50 transition-all shadow-card hover:shadow-glow group">
-                  <h3 className="text-2xl font-bold font-display mb-4 text-foreground group-hover:text-primary transition-colors">
-                    {mainPartner.name}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">{mainPartner.description}</p>
-                  <div className="text-primary group-hover:underline">
-                    Visit Website →
-                  </div>
-                </div>
-              </div>
-
-              {/* Sustainability Partners */}
-              <div className="mb-16">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
-                  <span className="bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
-                    Our Sustainability Partners
-                  </span>
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {sustainabilityPartners.map((partner, index) => (
-                    <div
-                      key={index}
-                      className="group p-6 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-border/50 hover:border-secondary/50 transition-all shadow-card hover:shadow-glow"
-                    >
-                      <h3 className="text-xl font-bold font-display mb-3 text-foreground group-hover:text-secondary transition-colors">
-                        {partner.name}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{partner.description}</p>
-                      <div className="text-secondary text-sm group-hover:underline">
-                        Visit Website →
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Main Exhibitors */}
-              <div className="mb-16">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
+              {/* Announcement */}
+              <div className="text-center py-16 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl border border-primary/20">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6">
                   <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Our Exhibitors
+                    Exhibitors Coming Soon
                   </span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {exhibitors.map((exhibitor, index) => (
-                    <div
-                      key={index}
-                      className="group p-6 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-border/50 hover:border-primary/50 transition-all shadow-card hover:shadow-glow"
-                    >
-                      <h3 className="text-lg font-bold font-display mb-3 text-foreground group-hover:text-primary transition-colors">
-                        {exhibitor.name}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">{exhibitor.description}</p>
-                      <div className="text-primary text-sm group-hover:underline">
-                        Visit Website →
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Thank You Message */}
-              <div className="text-center py-12 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl border border-primary/20">
-                <h3 className="text-2xl sm:text-3xl font-bold font-display mb-4 text-foreground">
-                  A big thank you to all our exhibitors for being part of Dagen I 2026!
-                </h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Your participation helps make this event an inspiring platform for innovation, collaboration, and growth. We're excited to have you on this journey and look forward to seeing all the connections and ideas that will come to life!
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+                  Our exhibitors for Dagen I 2026 will be announced soon! We're working with amazing companies from various industries to bring you the best career fair experience. Stay tuned to discover the innovative organizations that will be showcasing their opportunities and connecting with talented students.
                 </p>
               </div>
 
