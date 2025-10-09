@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import aboutUsImg from "@/assets/Dageni_group.png";
+import projectManager from "@/assets/Project_manager.png";
+import deputyProjectManager from "@/assets/Deputy_project_manager.png";
+import headOfBanquet from "@/assets/Head_of_banquet.png";
+import headOfBusinessRelations from "@/assets/Head_of_buisness_relations.png";
+import headOfCommunicationAndHR from "@/assets/Head_of_communication_and_HR.png";
+import headOfEvents from "@/assets/Head_of_events.png";
+import headOfLogistics from "@/assets/Head_of_logistics.png";
+import headOfLounge from "@/assets/Head_of_Lounge.png";
+import headOfMarketing from "@/assets/Head_of_marketing.png";
 
 const AboutUs = () => {
   return (
@@ -41,6 +50,88 @@ const AboutUs = () => {
             </Link>
 
             <div className="max-w-6xl mx-auto space-y-12 animate-fade-in-up">
+              
+              {/* Team Members */}
+              <div className="text-center mb-16">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-12">
+                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    Meet Our Team
+                  </span>
+                </h2>
+                
+                {/* Project Manager - Featured */}
+                <div className="mb-12">
+                  <div className="inline-block bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={projectManager} alt="Project Manager" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-4xl font-bold font-display text-primary mb-2">Project Manager</h3>
+                  </div>
+                </div>
+
+                {/* Deputy Project Manager */}
+                <div className="mb-12">
+                  <div className="inline-block bg-gradient-to-br from-secondary/10 via-accent/5 to-primary/10 rounded-3xl p-8 border border-secondary/20">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={deputyProjectManager} alt="Deputy Project Manager" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display mb-2">Deputy Project Manager</h3>
+                  </div>
+                </div>
+
+                {/* Department Heads Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&>*:last-child:nth-child(3n+1)]:lg:col-start-2 [&>*:last-child:nth-child(2n+1)]:md:col-start-2 [&>*:last-child:nth-child(2n+1)]:lg:col-start-auto">
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfBanquet} alt="Head of Banquet" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Banquet</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfBusinessRelations} alt="Head of Business Relations" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Business Relations</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfMarketing} alt="Head of Marketing" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Marketing</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfCommunicationAndHR} alt="Head of Communication and HR" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Communication and HR</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfEvents} alt="Head of Events" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Events</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfLogistics} alt="Head of Logistics" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Logistics</h3>
+                  </div>
+
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card lg:col-start-2">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfLounge} alt="Head of Lounge" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Lounge</h3>
+                  </div>
+
+                </div>
+              </div>
               
               {/* Mission Statement */}
               <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">

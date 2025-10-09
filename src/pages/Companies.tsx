@@ -177,9 +177,9 @@ export default function Companies() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-8 mb-8">
-                    <div className="text-center">
+                    <div className="text-center flex flex-col">
                       <h3 className="text-xl font-semibold mb-4">Exhibition Opportunities</h3>
-                      <p className="text-muted-foreground mb-4">Set up a booth, meet students directly, and showcase your company culture and career opportunities.</p>
+                      <p className="text-muted-foreground mb-4 flex-1">Set up a booth, meet students directly, and showcase your company culture and career opportunities.</p>
                       <ul className="text-sm text-muted-foreground text-left space-y-2">
                         <li>• Direct student interaction</li>
                         <li>• Booth space and networking</li>
@@ -187,9 +187,9 @@ export default function Companies() {
                         <li>• Business host opportunities</li>
                       </ul>
                     </div>
-                    <div className="text-center">
+                    <div className="text-center flex flex-col">
                       <h3 className="text-xl font-semibold mb-4">Sponsorship Opportunities</h3>
-                      <p className="text-muted-foreground mb-4">Support the next generation of engineers while gaining visibility among talented students.</p>
+                      <p className="text-muted-foreground mb-4 flex-1">Support the next generation of engineers while gaining visibility among talented students.</p>
                       <ul className="text-sm text-muted-foreground text-left space-y-2">
                         <li>• Brand visibility and marketing</li>
                         <li>• Website and catalog presence</li>
@@ -228,7 +228,7 @@ export default function Companies() {
                     
                     <div className="space-y-4">
                       <Button size="lg" className="w-full max-w-md" asChild>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
+                        <a>
                           Apply for Partnership
                         </a>
                       </Button>
