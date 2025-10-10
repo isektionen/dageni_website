@@ -92,9 +92,14 @@ export const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-border/50">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <p className="text-muted-foreground text-sm">
-              © 2026 Dagen I. All rights reserved.
-            </p>
+            <div className="text-center sm:text-left">
+              <p className="text-muted-foreground text-sm">
+                © 2026 Dagen I. All rights reserved.
+              </p>
+              <p className="text-muted-foreground/80 text-xs mt-1">
+                Developed by I-chapter's IT-group
+              </p>
+            </div>
             <div className="flex items-center space-x-6 text-sm">
               <span className="text-muted-foreground">January 23, 2026</span>
               <span className="text-primary font-medium">Nymble, Stockholm</span>
