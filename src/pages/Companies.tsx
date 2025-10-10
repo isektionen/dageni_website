@@ -70,7 +70,7 @@ export default function Companies() {
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>Monterspace with 1 standing table → A 2x2m Booth</span>
+                        <span>A 2x2m Booth</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>

@@ -8,8 +8,8 @@ interface TimeLeft {
 }
 
 export const Countdown = () => {
-  // January 23, 2026 - Event date
-  const targetDate = new Date("2026-01-23T00:00:00").getTime();
+  // January 23, 2026 at 10:00 AM - Event date
+  const targetDate = new Date("2026-01-23T10:00:00").getTime();
   
   const calculateTimeLeft = (): TimeLeft => {
     const now = new Date().getTime();
