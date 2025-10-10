@@ -64,29 +64,25 @@ export default function Companies() {
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-blue-600 mb-4">Standard Package</h3>
                       <p className="text-muted-foreground mb-4">
-                        The standard package allows you to interact with I-students from all year groups. This allows you to explain what makes your company unique.
+                        Meet Industrial engineering & management students across all years and showcase what makes your company stand out.
                       </p>
                     </div>
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>Monterspace with 1 standing table</span>
+                        <span>Monterspace with 1 standing table → A 2x2m Booth</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>1 business host</span>
+                        <span>One on-site business host</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>4 lunch tickets</span>
+                        <span>Opportunity to book one-to-one student meetings</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>Possibility to have contact meets</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Electricity and Wi-Fi during the fair</span>
+                        <span>Two Banquet tickets</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
@@ -94,15 +90,19 @@ export default function Companies() {
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>2 tickets for the banquet</span>
+                        <span>Four breakfast/lunch vouchers</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>Inclusion on the photo wall</span>
+                        <span>Placement on the photo wall</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-blue-600 font-bold">•</span>
-                        <span>Marketing on the Dagen I website and in the company-catalog</span>
+                        <span>Marketing on the Dagen I website and inside the company catalogue</span>
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span>Electricity and Wi-Fi during the fair</span>
                       </div>
                     </div>
                   </div>
@@ -115,49 +115,35 @@ export default function Companies() {
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-yellow-600 mb-4">Premium Package</h3>
                       <p className="text-muted-foreground mb-4">
-                        With the premium package your company will have the chance for some extra exposure and the opportunity to increase students' awareness about what your company works with and what you have to offer.
+                        With the Premium package, your company will get the chance to gain extra exposure and to increase students' awareness of what your company does and offers.
+                      </p>
+                      <p className="text-muted-foreground mb-4 text-sm font-medium">
+                        The premium package includes everything in the Standard Package, but with:
                       </p>
                     </div>
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <div className="flex items-start space-x-2">
                         <span className="text-yellow-600 font-bold">•</span>
-                        <span>Monterspace with 1 standing table</span>
+                        <span>Event of your choice*</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-yellow-600 font-bold">•</span>
-                        <span>An event of your choice</span>
+                        <span>A 2x3m Booth</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-yellow-600 font-bold">•</span>
-                        <span>1 business host</span>
+                        <span>Two business hosts</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-yellow-600 font-bold">•</span>
-                        <span>4 lunch tickets</span>
+                        <span>125% enhanced logo size on the photo wall</span>
                       </div>
                       <div className="flex items-start space-x-2">
                         <span className="text-yellow-600 font-bold">•</span>
-                        <span>The possibility to have contact meets</span>
+                        <span>Premium-spot, by preference or priority allocation</span>
                       </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Electricity and Wi-Fi during the fair</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Access to the business lounge</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>2 tickets for the banquet</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Inclusion on the photo wall</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Marketing on the Dagen I website and in the company-catalog</span>
+                      <div className="text-xs text-muted-foreground mt-4 italic">
+                        * Location of your choice, subject to availability and approval
                       </div>
                     </div>
                   </div>
