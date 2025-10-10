@@ -7,6 +7,7 @@ import aboutUsImg from "@/assets/Dageni_group.png";
 import projectManager from "@/assets/Project_manager.png";
 import deputyProjectManager from "@/assets/Deputy_project_manager.png";
 import headOfBanquet from "@/assets/Head_of_banquet.png";
+import headOfBranding from "@/assets/Head_of_branding.png";
 import headOfBusinessRelations from "@/assets/Head_of_buisness_relations.png";
 import headOfCommunicationAndHR from "@/assets/Head_of_communication_and_HR.png";
 import headOfEvents from "@/assets/Head_of_events.png";
@@ -59,19 +60,16 @@ const AboutUs = () => {
                   </span>
                 </h2>
                 
-                {/* Project Manager - Featured */}
-                <div className="mb-12">
-                  <div className="inline-block bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
+                {/* Top Level - Project Manager and Deputy Project Manager */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                  <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
                     <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                       <img src={projectManager} alt="Project Manager" className="w-full h-full object-cover" />
                     </div>
-                    <h3 className="text-4xl font-bold font-display text-primary mb-2">Project Manager</h3>
+                    <h3 className="text-2xl font-bold font-display mb-2">Project Manager</h3>
                   </div>
-                </div>
-
-                {/* Deputy Project Manager */}
-                <div className="mb-12">
-                  <div className="inline-block bg-gradient-to-br from-secondary/10 via-accent/5 to-primary/10 rounded-3xl p-8 border border-secondary/20">
+                  
+                  <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
                     <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                       <img src={deputyProjectManager} alt="Deputy Project Manager" className="w-full h-full object-cover" />
                     </div>
@@ -79,8 +77,8 @@ const AboutUs = () => {
                   </div>
                 </div>
 
-                {/* Department Heads Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&>*:last-child:nth-child(3n+1)]:lg:col-start-2 [&>*:last-child:nth-child(2n+1)]:md:col-start-2 [&>*:last-child:nth-child(2n+1)]:lg:col-start-auto">
+                {/* Second Row - 3 Department Heads */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
                     <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                       <img src={headOfBanquet} alt="Head of Banquet" className="w-full h-full object-cover" />
@@ -101,7 +99,10 @@ const AboutUs = () => {
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Marketing</h3>
                   </div>
+                </div>
 
+                {/* Third Row - 3 Department Heads */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
                     <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                       <img src={headOfCommunicationAndHR} alt="Head of Communication and HR" className="w-full h-full object-cover" />
@@ -122,14 +123,23 @@ const AboutUs = () => {
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Logistics</h3>
                   </div>
+                </div>
 
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card lg:col-start-2">
+                {/* Bottom Row - 2 Department Heads */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
                     <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
                       <img src={headOfLounge} alt="Head of Lounge" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Lounge</h3>
                   </div>
 
+                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
+                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+                      <img src={headOfBranding} alt="Head of Branding" className="w-full h-full object-cover" />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display">Head of Branding</h3>
+                  </div>
                 </div>
               </div>
               
