@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import aboutUsImg from "@/assets/Dageni_group.png";
+import aboutUsImg from "@/assets/cover_all.jpg";
 import projectManager from "@/assets/Project_manager.jpg";
 import deputyProjectManager from "@/assets/Deputy_project_manager.jpg";
 import headOfBanquet from "@/assets/Head_of_banquet.jpg";
@@ -54,9 +54,14 @@ const AboutUs = () => {
               
               {/* Team Members */}
               <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold font-display mb-5">
                   <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Meet Our Team
+                    Dagen I Committee
+                  </span>
+                </h2>
+                <h2 className="text-1xl sm:text-3xl font-display mb-12">
+                  <span className="text-center text-foreground/80">
+                    2025/2026
                   </span>
                 </h2>
                 
