@@ -1,4 +1,4 @@
-import { ArrowLeft, Target } from "lucide-react";
+import { ArrowLeft, Target, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
@@ -67,6 +67,13 @@ const AboutUs = () => {
                       <img src={projectManager} alt="Project Manager" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display mb-2">Project Manager</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Robin Akela</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:projektledare@dageni.se" className="text-primary hover:underline">
+                        projektledare@dageni.se
+                      </a>
+                    </div>
                   </div>
                   
                   <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
@@ -74,6 +81,13 @@ const AboutUs = () => {
                       <img src={deputyProjectManager} alt="Deputy Project Manager" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display mb-2">Deputy Project Manager</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Edwin Taeby</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:vice@dageni.se" className="text-primary hover:underline">
+                        vice@dageni.se
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -84,6 +98,13 @@ const AboutUs = () => {
                       <img src={headOfBanquet} alt="Head of Banquet" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Banquet</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Per Ihse</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:bankett@dageni.se" className="text-primary hover:underline">
+                        bankett@dageni.se
+                      </a>
+                    </div>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
@@ -91,6 +112,13 @@ const AboutUs = () => {
                       <img src={headOfBusinessRelations} alt="Head of Business Relations" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Business Relations</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Filip Pring, Nasib Abbassoy</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:naringsliv@dageni.se" className="text-primary hover:underline">
+                        naringsliv@dageni.se
+                      </a>
+                    </div>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
@@ -98,6 +126,13 @@ const AboutUs = () => {
                       <img src={headOfMarketing} alt="Head of Marketing" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Marketing</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Siri Kämpe</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:marknadsforing@dageni.se" className="text-primary hover:underline">
+                        marknadsforing@dageni.se
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -108,6 +143,13 @@ const AboutUs = () => {
                       <img src={headOfCommunicationAndHR} alt="Head of Communication and HR" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Communication and HR</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Steve Henin</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:hr@iare.nu" className="text-primary hover:underline">
+                        hr@iare.nu
+                      </a>
+                    </div>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
@@ -115,6 +157,13 @@ const AboutUs = () => {
                       <img src={headOfEvents} alt="Head of Events" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Events</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Vilhelm Janson, Alice Wänblad</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:event@dageni.se" className="text-primary hover:underline">
+                        event@dageni.se
+                      </a>
+                    </div>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
@@ -122,6 +171,13 @@ const AboutUs = () => {
                       <img src={headOfLogistics} alt="Head of Logistics" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Logistics</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Elsa Berg, David Carlsson</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:logistik@dageni.se" className="text-primary hover:underline">
+                        logistik@dageni.se
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -132,6 +188,13 @@ const AboutUs = () => {
                       <img src={headOfLounge} alt="Head of Lounge" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Lounge</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Linnea Neiderud</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:lounge@dageni.se" className="text-primary hover:underline">
+                        lounge@dageni.se
+                      </a>
+                    </div>
                   </div>
 
                   <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
@@ -139,6 +202,13 @@ const AboutUs = () => {
                       <img src={headOfBranding} alt="Head of Branding" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Branding</h3>
+                    <p className="text-lg font-semibold text-foreground mb-2">Eddie Xia</p>
+                    <div className="flex items-center justify-center space-x-2">
+                      <Mail className="h-4 w-4 text-primary" />
+                      <a href="mailto:branding@dageni.se" className="text-primary hover:underline">
+                        branding@dageni.se
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
