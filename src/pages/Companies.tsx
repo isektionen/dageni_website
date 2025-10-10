@@ -214,7 +214,7 @@ export default function Companies() {
                     
                     <div className="space-y-4">
                       <Button size="lg" className="w-full max-w-md" asChild>
-                        <a>
+                        <a href ="https://docs.google.com/forms/d/e/1FAIpQLSe9GKiRO2ZDBZz6A4gzzDZj8t6NppxQ4qAtMwMaTyBoFzo-Sg/viewform" target="_blank" rel="noopener noreferrer">
                           Apply for Partnership
                         </a>
                       </Button>
