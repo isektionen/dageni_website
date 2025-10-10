@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import aboutUsImg from "@/assets/Dageni_group.png";
-import projectManager from "@/assets/Project_manager.png";
-import deputyProjectManager from "@/assets/Deputy_project_manager.png";
-import headOfBanquet from "@/assets/Head_of_banquet.png";
-import headOfBranding from "@/assets/Head_of_branding.png";
-import headOfBusinessRelations from "@/assets/Head_of_buisness_relations.png";
-import headOfCommunicationAndHR from "@/assets/Head_of_communication_and_HR.png";
-import headOfEvents from "@/assets/Head_of_events.png";
-import headOfLogistics from "@/assets/Head_of_logistics.png";
-import headOfLounge from "@/assets/Head_of_Lounge.png";
-import headOfMarketing from "@/assets/Head_of_marketing.png";
+import projectManager from "@/assets/Project_manager.jpg";
+import deputyProjectManager from "@/assets/Deputy_project_manager.jpg";
+import headOfBanquet from "@/assets/Head_of_banquet.jpg";
+import headOfBranding from "@/assets/Head_of_branding.jpg";
+import headOfBusinessRelations from "@/assets/Head_of_buisness_relations.jpg";
+import headOfCommunicationAndHR from "@/assets/Head_of_communication_and_HR.jpg";
+import headOfEvents from "@/assets/Head_of_events.jpg";
+import headOfLogistics from "@/assets/Head_of_logistics.jpg";
+import headOfLounge from "@/assets/Head_of_Lounge.jpg";
+import headOfMarketing from "@/assets/Head_of_marketing.jpg";
 
 const AboutUs = () => {
   return (
