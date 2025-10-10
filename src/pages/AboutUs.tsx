@@ -112,7 +112,7 @@ const AboutUs = () => {
                       <img src={headOfBusinessRelations} alt="Head of Business Relations" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Business Relations</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Filip Pring, Nasib Abbassoy</p>
+                    <p className="text-lg font-semibold text-foreground mb-2">Filip Pring & Nasib Abbassoy</p>
                     <div className="flex items-center justify-center space-x-2">
                       <Mail className="h-4 w-4 text-primary" />
                       <a href="mailto:naringsliv@dageni.se" className="text-primary hover:underline">
@@ -157,7 +157,7 @@ const AboutUs = () => {
                       <img src={headOfEvents} alt="Head of Events" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Events</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Vilhelm Janson, Alice Wänblad</p>
+                    <p className="text-lg font-semibold text-foreground mb-2">Vilhelm Janson & Alice Wänblad</p>
                     <div className="flex items-center justify-center space-x-2">
                       <Mail className="h-4 w-4 text-primary" />
                       <a href="mailto:event@dageni.se" className="text-primary hover:underline">
@@ -171,7 +171,7 @@ const AboutUs = () => {
                       <img src={headOfLogistics} alt="Head of Logistics" className="w-full h-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold font-display">Head of Logistics</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Elsa Berg, David Carlsson</p>
+                    <p className="text-lg font-semibold text-foreground mb-2">Elsa Berg & David Carlsson</p>
                     <div className="flex items-center justify-center space-x-2">
                       <Mail className="h-4 w-4 text-primary" />
                       <a href="mailto:logistik@dageni.se" className="text-primary hover:underline">
