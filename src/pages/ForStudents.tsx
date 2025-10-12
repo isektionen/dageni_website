@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import studentsHero from "@/assets/dagenipic1.jpg";
+import studentsHero from "@/assets/dagenipic1_optimized.jpg";
 import sponsorsImg from "@/assets/dagenipic4.jpg";
 import { useEffect } from "react";
 

@@ -28,6 +28,7 @@ export const SectionCard = ({
           <img
             src={image}
             alt={title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />

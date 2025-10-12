@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import ourExhibitorsImg from "@/assets/dagenipic3.jpg";
+import ourExhibitorsImg from "@/assets/dagenipic3_optimized.jpg";
 
 const OurExhibitors = () => {
   // Main Partner

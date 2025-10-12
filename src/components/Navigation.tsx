@@ -166,9 +166,14 @@ export const Navigation = () => {
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-border/50 bg-background/95 backdrop-blur-lg">
-            <div className="container mx-auto px-4 sm:px-6 py-4 space-y-2">
+        <div 
+          className={`lg:hidden border-t border-border/50 bg-background/95 backdrop-blur-lg overflow-hidden transition-all duration-300 ease-out ${
+            isMobileMenuOpen 
+              ? 'max-h-screen opacity-100 translate-y-0' 
+              : 'max-h-0 opacity-0 -translate-y-2'
+          }`}
+        >
+          <div className="container mx-auto px-4 sm:px-6 py-4 space-y-2">
               {/* For Students group */}
               <Link to="/for-students" onClick={handleLinkClick}>
                 <Button variant="ghost" className="w-full justify-start font-semibold text-primary">For Students</Button>
@@ -220,7 +225,6 @@ export const Navigation = () => {
               </div>
             </div>
           </div>
-        )}
       </div>
     </nav>
   );

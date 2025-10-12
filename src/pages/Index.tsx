@@ -1,13 +1,13 @@
 import { MapPin } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Countdown } from "@/components/Countdown";
+import { CountdownLight as Countdown } from "@/components/CountdownLight";
 import { SectionCard } from "@/components/SectionCard";
-import studentsHero from "@/assets/dagenipic1.jpg";
-import exhibitorsImg from "@/assets/dagenipic2.jpg";
-import ourExhibitorsImg from "@/assets/dagenipic3.jpg";
+import studentsHero from "@/assets/dagenipic1_optimized.jpg";
+import exhibitorsImg from "@/assets/dagenipic2_optimized.jpg";
+import ourExhibitorsImg from "@/assets/dagenipic3_optimized.jpg";
 import dageniLogo from "@/assets/dageni_profile_pic.jpg";
-import aboutUsImg from "@/assets/Dageni_group.png";
+import aboutUsImg from "@/assets/cover_all.jpg";
 
 const Index = () => {
   return (
@@ -23,7 +23,7 @@ const Index = () => {
         
         {/* Hero Image Overlay */}
         <div className="absolute inset-0 opacity-5">
-          <img src={studentsHero} alt="" className="w-full h-full object-cover" />
+          <img src={studentsHero} alt="" loading="lazy" className="w-full h-full object-cover" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -55,6 +55,7 @@ const Index = () => {
                   <img 
                     src={dageniLogo} 
                     alt="Dagen I Logo" 
+                    loading="eager"
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -7,12 +7,11 @@ interface TimeLeft {
   seconds: number;
 }
 
-export const Countdown = () => {
-  // January 23, 2026 at 10:00 AM - Event date
+export const CountdownLight = () => {
   const targetDate = useMemo(() => new Date("2026-01-23T10:00:00").getTime(), []);
   
   const calculateTimeLeft = useCallback((): TimeLeft => {
-    const now = Date.now(); // More performant than new Date().getTime()
+    const now = Date.now();
     const difference = targetDate - now;
 
     if (difference > 0) {
@@ -38,14 +37,11 @@ export const Countdown = () => {
   }, [calculateTimeLeft]);
 
   const TimeUnit = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center group">
-      <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-20 blur-xl group-hover:opacity-30 transition-opacity rounded-2xl" />
-        <div className="relative bg-card/80 backdrop-blur-sm px-6 py-4 sm:px-8 sm:py-6 rounded-2xl border border-primary/20 group-hover:border-primary/40 transition-all shadow-lg group-hover:shadow-glow">
-          <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent">
-            {String(value).padStart(2, "0")}
-          </span>
-        </div>
+    <div className="flex flex-col items-center">
+      <div className="bg-card px-6 py-4 sm:px-8 sm:py-6 rounded-xl border">
+        <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display text-primary">
+          {String(value).padStart(2, "0")}
+        </span>
       </div>
       <span className="mt-3 text-sm sm:text-base md:text-lg font-medium text-muted-foreground uppercase tracking-wider">
         {label}

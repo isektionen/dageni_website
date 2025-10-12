@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import exhibitorsImg from "@/assets/dagenipic2.jpg";
+import exhibitorsImg from "@/assets/dagenipic2_optimized.jpg";
 
 export default function Companies() {
   const { hash } = useLocation();
