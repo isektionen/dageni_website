@@ -125,7 +125,7 @@ const Index = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mt-8 md:mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mt-8 md:mt-12">
             <SectionCard
               id="our-exhibitors"
               title="Our Exhibitors"
@@ -142,6 +142,15 @@ const Index = () => {
               image={aboutUsImg}
               link="/about-us"
               gradient="secondary"
+            />
+
+            <SectionCard
+              id="hand-in-hand"
+              title="Hand in Hand"
+              description="Charity collaboration — companies donate to Hand in Hand and receive a flower sized by their donation. Click to see details."
+              image={aboutUsImg}
+              link="/hand-in-hand"
+              gradient="primary"
             />
           </div>
         </div>

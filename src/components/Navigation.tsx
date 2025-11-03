@@ -116,6 +116,16 @@ export const Navigation = () => {
               </Button>
             </Link>
 
+            {/* Hand in Hand charity page */}
+            <Link to="/hand-in-hand">
+              <Button
+                variant="ghost"
+                className="text-foreground/80 hover:text-foreground"
+              >
+                Hand in Hand
+              </Button>
+            </Link>
+
             {/* Location */}
             <a 
               href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
@@ -213,6 +223,9 @@ export const Navigation = () => {
               <div className="mt-4 space-y-1">
                 <Link to="/about-us" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start font-semibold">About us</Button>
+                </Link>
+                <Link to="/hand-in-hand" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start font-semibold">Hand in Hand</Button>
                 </Link>
                 <a 
                   href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"

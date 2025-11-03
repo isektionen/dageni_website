@@ -19,10 +19,10 @@ export const SectionCard = ({
   gradient = "primary",
 }: SectionCardProps) => {
   return (
-    <Link to={link} className="block">
+    <Link to={link} className="block h-full">
       <div
         id={id}
-        className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-card hover:shadow-glow animate-fade-in-up cursor-pointer"
+        className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 shadow-card hover:shadow-glow animate-fade-in-up cursor-pointer h-full flex flex-col"
       >
         <div className="relative aspect-[16/9] overflow-hidden">
           <img
@@ -34,7 +34,7 @@ export const SectionCard = ({
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
         </div>
 
-        <div className="relative p-6 sm:p-8">
+  <div className="relative p-6 sm:p-8 flex-1">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             {title}
           </h3>

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import ForStudents from "./pages/ForStudents";
 import OurExhibitors from "./pages/OurExhibitors";
 import AboutUs from "./pages/AboutUs";
+import HandInHand from "./pages/HandInHand";
 import NotFound from "./pages/NotFound";
 import Companies from "./pages/Companies";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/for-students" element={<ForStudents />} />
           <Route path="/our-exhibitors" element={<OurExhibitors />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/hand-in-hand" element={<HandInHand />} />
           {/* Redirect standalone sponsors/events to ForStudents sections */}
           <Route path="/our-sponsors" element={<Navigate to="/for-students#our-sponsors" replace />} />
           <Route path="/events" element={<Navigate to="/for-students#events" replace />} />
