@@ -127,7 +127,12 @@ const ForStudents = () => {
                     </div>
                     
                     <div className="text-center p-4 bg-accent/10 rounded-xl border border-accent/20">
-                      <p className="text-accent font-medium">The application to become a company host hasn't opened yet. Stay tuned!</p>
+                      <p className="text-accent font-medium mb-4">Apply now to become a company host!</p>
+                      <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                        <a href="https://forms.gle/EDDxLBg69E9LCmvp9" target="_blank" rel="noopener noreferrer">
+                          Apply Here
+                        </a>
+                      </Button>
                     </div>
                   </div>
                 </div>
