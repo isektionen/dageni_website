@@ -108,10 +108,10 @@ const ForStudents = () => {
             <div className="max-w-4xl mx-auto space-y-12 animate-fade-in-up">
               {/* Our Exhibitors Section */}
               <section id="exhibitors" className="scroll-mt-24">
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Our exhibitors</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Our Exhibitors</h2>
                 <p className="text-muted-foreground mb-6">Discover companies attending Dagen I.</p>
                 <Button asChild>
-                  <Link to="/our-exhibitors">Browse exhibitors</Link>
+                  <Link to="/our-exhibitors">Browse Exhibitors</Link>
                 </Button>
               </section>
 
@@ -126,7 +126,7 @@ const ForStudents = () => {
 
               {/* Our Sponsors Section */}
               <section id="our-sponsors" className="scroll-mt-24">
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Our sponsors</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Our Sponsors</h2>
                 <div className="relative rounded-3xl overflow-hidden mb-8">
                   <img src={sponsorsImg} alt="Sponsors" className="w-full h-60 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-transparent" />
@@ -172,7 +172,7 @@ const ForStudents = () => {
                 <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
                   <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
                     <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                      Become a host for Dagen I
+                      Become a Host for Dagen I
                     </span>
                   </h2>
                   
