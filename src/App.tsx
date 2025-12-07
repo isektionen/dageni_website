@@ -10,6 +10,8 @@ import OurExhibitors from "./pages/OurExhibitors";
 import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
 import Companies from "./pages/Companies";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,9 @@ const App = () => (
           <Route path="/for-students" element={<ForStudents />} />
           <Route path="/our-exhibitors" element={<OurExhibitors />} />
           <Route path="/about-us" element={<AboutUs />} />
+          {/* Admin routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* Redirect standalone sponsors/events to ForStudents sections */}
           <Route path="/our-sponsors" element={<Navigate to="/for-students#our-sponsors" replace />} />
           <Route path="/events" element={<Navigate to="/for-students#events" replace />} />

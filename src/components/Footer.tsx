@@ -1,5 +1,6 @@
 import { Calendar, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -103,6 +104,9 @@ export const Footer = () => {
             <div className="flex items-center space-x-6 text-sm">
               <span className="text-muted-foreground">January 23, 2026</span>
               <span className="text-primary font-medium">Nymble, Stockholm</span>
+              <Link to="/admin/login" className="text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors text-xs">
+                •
+              </Link>
             </div>
           </div>
         </div>

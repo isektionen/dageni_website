@@ -5,10 +5,13 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import studentsHero from "@/assets/dagenipic1_optimized.jpg";
 import sponsorsImg from "@/assets/dagenipic4.jpg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { supabase, Company } from "@/lib/supabase";
 
 const ForStudents = () => {
   const { hash } = useLocation();
+  const [sponsors, setSponsors] = useState<Company[]>([]);
+  const [loadingSponsors, setLoadingSponsors] = useState(true);
 
   useEffect(() => {
     if (hash) {
@@ -19,6 +22,54 @@ const ForStudents = () => {
       window.scrollTo({ top: 0 });
     }
   }, [hash]);
+
+  useEffect(() => {
+    fetchSponsors();
+  }, []);
+
+  const fetchSponsors = async () => {
+    setLoadingSponsors(true);
+    
+    const { data, error } = await supabase
+      .from('companies')
+      .select('*')
+      .eq('type', 'sponsor')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching sponsors:', error);
+    } else {
+      setSponsors(data || []);
+    }
+    
+    setLoadingSponsors(false);
+  };
+
+  const SponsorCard = ({ company }: { company: Company }) => (
+    <div className="bg-card rounded-2xl p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-start gap-4 mb-4">
+        <img 
+          src={company.logo_url} 
+          alt={`${company.name} logo`}
+          className="w-16 h-16 object-contain rounded bg-white p-2"
+        />
+        <div className="flex-1">
+          <h3 className="text-xl font-bold font-display mb-1">{company.name}</h3>
+          {company.website && (
+            <a 
+              href={company.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary hover:underline"
+            >
+              Visit website →
+            </a>
+          )}
+        </div>
+      </div>
+      <p className="text-muted-foreground leading-relaxed">{company.description}</p>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -80,9 +131,23 @@ const ForStudents = () => {
                   <img src={sponsorsImg} alt="Sponsors" className="w-full h-60 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-transparent" />
                 </div>
-                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                  <p className="text-muted-foreground">Our sponsors for Dagen I 2026 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
-                </div>
+                
+                {loadingSponsors ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading sponsors...</p>
+                  </div>
+                ) : sponsors.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {sponsors.map((company) => (
+                      <SponsorCard key={company.id} company={company} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
+                    <p className="text-muted-foreground">Our sponsors for Dagen I 2026 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
+                  </div>
+                )}
               </section>
 
               {/* Contact Meetings */}
