@@ -1,8 +1,31 @@
 import { Calendar, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export const Footer = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsLoggedIn(!!session);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleAdminClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(isLoggedIn ? '/admin/dashboard' : '/admin/login');
+  };
   return (
     <footer className="relative py-16 sm:py-20 border-t border-border/50 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4 sm:px-6">
@@ -104,9 +127,12 @@ export const Footer = () => {
             <div className="flex items-center space-x-6 text-sm">
               <span className="text-muted-foreground">January 23, 2026</span>
               <span className="text-primary font-medium">Nymble, Stockholm</span>
-              <Link to="/admin/login" className="text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors text-xs">
+              <button 
+                onClick={handleAdminClick}
+                className="text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors text-xs cursor-pointer"
+              >
                 •
-              </Link>
+              </button>
             </div>
           </div>
         </div>
