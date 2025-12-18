@@ -1,0 +1,65 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    # Run every 5 days at 3:00 AM UTC
+    - cron: '0 3 */5 * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Our Exhibitors page
+        run: |
+          echo "Pinging dageni.se to keep Supabase active..."
+          echo "Timestamp: $(date)"
+          
+          # Ping with retry logic
+          for i in 1 2 3; do
+            echo "Attempt $i/3..."
+            
+            response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/our-exhibitors)
+            
+            if [ "$response" -eq 200 ]; then
+              echo "✅ Success! Received HTTP $response"
+              break
+            else
+              echo "⚠️ Received HTTP $response"
+              if [ $i -lt 3 ]; then
+                echo "Retrying in 10 seconds..."
+                sleep 10
+              else
+                echo "❌ Failed after 3 attempts"
+                exit 1
+              fi
+            fi
+          done
+      
+      - name: Ping For Students page
+        run: |
+          echo "Pinging For Students page..."
+          
+          response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/for-students)
+          
+          if [ "$response" -eq 200 ]; then
+            echo "✅ Success! Received HTTP $response"
+          else
+            echo "⚠️ Received HTTP $response (non-critical)"
+          fi
+          
+          echo "Keep-alive completed at $(date)"
+      
+      - name: Send notification on failure
+        if: failure()
+        run: |
+          echo "🚨 Keep-alive workflow failed!"
+          echo "This might mean:"
+          echo "  - Supabase is paused (unpause at supabase.com)"
+          echo "  - Website is down"
+          echo "  - Network issue"
+          echo ""
+          echo "Check the logs above for details."
