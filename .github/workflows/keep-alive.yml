@@ -22,7 +22,7 @@ jobs:
           for i in 1 2 3; do
             echo "Attempt $i/3..."
             
-            response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/our-exhibitors)
+            response=$(curl -L -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/our-exhibitors)
             
             if [ "$response" -eq 200 ]; then
               echo "✅ Success! Received HTTP $response"
@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "Pinging For Students page..."
           
-          response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/for-students)
+          response=$(curl -L -s -o /dev/null -w "%{http_code}" --max-time 30 https://dageni.se/for-students)
           
           if [ "$response" -eq 200 ]; then
             echo "✅ Success! Received HTTP $response"
