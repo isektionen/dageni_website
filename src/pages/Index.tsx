@@ -33,9 +33,16 @@ const Index = () => {
                 <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-primary animate-pulse-glow" />
                 <span className="text-base sm:text-lg md:text-xl font-medium">Nymble</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display">
-                <span className="block text-foreground/80 mb-2">23 January 2026</span>
-              </h2>
+              <div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-foreground/80 mb-4">
+                  23 January 2026
+                </h2>
+              </div>
+              <div>
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-display text-foreground/60">
+                  10:00 - 15:00
+                </p>
+              </div>
             </div>
 
             <div className="py-2 sm:py-4">
