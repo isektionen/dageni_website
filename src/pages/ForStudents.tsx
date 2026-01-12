@@ -11,7 +11,9 @@ import { supabase, Company } from "@/lib/supabase";
 const ForStudents = () => {
   const { hash } = useLocation();
   const [sponsors, setSponsors] = useState<Company[]>([]);
+  const [sustainabilityPartners, setSustainabilityPartners] = useState<Company[]>([]);
   const [loadingSponsors, setLoadingSponsors] = useState(true);
+  const [loadingSustainabilityPartners, setLoadingSustainabilityPartners] = useState(true);
 
   useEffect(() => {
     if (hash) {
@@ -25,6 +27,7 @@ const ForStudents = () => {
 
   useEffect(() => {
     fetchSponsors();
+    fetchSustainabilityPartners();
   }, []);
 
   const fetchSponsors = async () => {
@@ -43,6 +46,24 @@ const ForStudents = () => {
     }
     
     setLoadingSponsors(false);
+  };
+
+  const fetchSustainabilityPartners = async () => {
+    setLoadingSustainabilityPartners(true);
+    
+    const { data, error } = await supabase
+      .from('companies')
+      .select('*')
+      .eq('type', 'sustainability-partner')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching sustainability partners:', error);
+    } else {
+      setSustainabilityPartners(data || []);
+    }
+    
+    setLoadingSustainabilityPartners(false);
   };
 
   const SponsorCard = ({ company }: { company: Company }) => (
@@ -115,6 +136,15 @@ const ForStudents = () => {
                 </Button>
               </section>
 
+              {/* Company Catalog Section */}
+              <section id="company-catalog" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Company Catalog</h2>
+                <p className="text-muted-foreground mb-6">Browse our comprehensive catalog featuring all exhibiting companies, their offerings, and contact information.</p>
+                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
+                  <p className="text-muted-foreground text-center">The company catalog PDF will be available soon. Check back later to view or download the complete guide.</p>
+                </div>
+              </section>
+
               {/* Events Section */}
               <section id="events" className="scroll-mt-24">
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Events</h2>
@@ -127,10 +157,6 @@ const ForStudents = () => {
               {/* Our Sponsors Section */}
               <section id="our-sponsors" className="scroll-mt-24">
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Our Sponsors</h2>
-                <div className="relative rounded-3xl overflow-hidden mb-8">
-                  <img src={sponsorsImg} alt="Sponsors" className="w-full h-60 object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-transparent" />
-                </div>
                 
                 {loadingSponsors ? (
                   <div className="text-center py-8">
@@ -150,6 +176,32 @@ const ForStudents = () => {
                 )}
               </section>
 
+              {/* Our Sustainability Partners Section */}
+              <section id="our-sustainability-partners" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">
+                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                    Our Sustainability Partners
+                  </span>
+                </h2>
+                
+                {loadingSustainabilityPartners ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading sustainability partners...</p>
+                  </div>
+                ) : sustainabilityPartners.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {sustainabilityPartners.map((company) => (
+                      <SponsorCard key={company.id} company={company} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
+                    <p className="text-muted-foreground">Our sustainability partners for Dagen I 2026 will be announced soon. Stay tuned to see the amazing organizations supporting our commitment to sustainability.</p>
+                  </div>
+                )}
+              </section>
+
               {/* Contact Meetings */}
               <section id="contact-meetings" className="scroll-mt-24">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-6">
@@ -163,7 +215,12 @@ const ForStudents = () => {
                 </p>
                 
                 <div className="text-center p-4 bg-secondary/10 rounded-xl border border-secondary/20">
-                  <p className="text-secondary font-medium">The application for contact meetings hasn't opened yet. Stay tuned!</p>
+                  <p className="text-secondary font-medium mb-4">Apply now for contact meetings!</p>
+                  <Button asChild size="lg" className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90">
+                    <a href="https://docs.google.com/forms/d/19LlssiCEgW7kSGM-QpvHpOIIImEPBhamU0wICQ_tJb8/viewform?fbclid=IwY2xjawPSHd1leHRuA2FlbQIxMABicmlkETBPVnVBcFZaRHNEbm9FeUFGc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHrGGTVZO_sp4ZgjMkbXuaf-TsnKSpcNcgMZYQkGBz7CsB-2mLOMjHBe-Xpcm_aem_WBfpbuZWBnVQxKk9UC09Sw&edit_requested=true" target="_blank" rel="noopener noreferrer">
+                      Apply Here
+                    </a>
+                  </Button>
                 </div>
               </section>
 
@@ -180,7 +237,7 @@ const ForStudents = () => {
                     <div>
                       <h3 className="text-xl font-bold font-display mb-3 text-foreground">What is a company host?</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        As a host you will be responsible for the communication with a company before and after the fair. You will represent the chapter as the main contact person from our side and act as the company's helping hand when needed. The purpose is to make the communication and process smoother, for both parts.
+                        As a host you will be responsible for the communication with a company before and during the fair. You will represent the chapter as the main contact person from our side and act as the company's helping hand when needed. The purpose is to make the communication and process smoother, for both parts.
                       </p>
                     </div>
                     
@@ -191,13 +248,8 @@ const ForStudents = () => {
                       </p>
                     </div>
                     
-                    <div className="text-center p-4 bg-accent/10 rounded-xl border border-accent/20">
-                      <p className="text-accent font-medium mb-4">Apply now to become a company host!</p>
-                      <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
-                        <a href="https://forms.gle/EDDxLBg69E9LCmvp9" target="_blank" rel="noopener noreferrer">
-                          Apply Here
-                        </a>
-                      </Button>
+                    <div className="text-center p-4 bg-muted/50 rounded-xl border border-muted">
+                      <p className="text-muted-foreground font-medium">Application has closed</p>
                     </div>
                   </div>
                 </div>

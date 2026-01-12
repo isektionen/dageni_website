@@ -180,19 +180,19 @@ export const Navigation = () => {
               </Link>
               <div className="ml-4 space-y-1">
                 <Link to="/our-exhibitors" onClick={handleLinkClick}>
-                  <Button variant="ghost" className="w-full justify-start text-sm">Our exhibitors</Button>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Our Exhibitors</Button>
                 </Link>
                 <Link to="/for-students#events" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Events</Button>
                 </Link>
                 <Link to="/for-students#our-sponsors" onClick={handleLinkClick}>
-                  <Button variant="ghost" className="w-full justify-start text-sm">Our sponsors</Button>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Our Sponsors</Button>
                 </Link>
                 <Link to="/for-students#contact-meetings" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Contact Meetings</Button>
                 </Link>
                 <Link to="/for-students#become-a-host" onClick={handleLinkClick}>
-                  <Button variant="ghost" className="w-full justify-start text-sm">Become a host!</Button>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Become a Host!</Button>
                 </Link>
               </div>
 
@@ -205,14 +205,14 @@ export const Navigation = () => {
                   <Button variant="ghost" className="w-full justify-start text-sm">Exhibition Packages</Button>
                 </Link>
                 <Link to="/for-companies#become-a-partner" onClick={handleLinkClick}>
-                  <Button variant="ghost" className="w-full justify-start text-sm">Become a partner</Button>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Become a Partner</Button>
                 </Link>
               </div>
 
               {/* About & Location */}
               <div className="mt-4 space-y-1">
                 <Link to="/about-us" onClick={handleLinkClick}>
-                  <Button variant="ghost" className="w-full justify-start font-semibold">About us</Button>
+                  <Button variant="ghost" className="w-full justify-start font-semibold">About Us</Button>
                 </Link>
                 <a 
                   href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"

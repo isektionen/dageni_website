@@ -16,6 +16,7 @@ const AdminDashboard = () => {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [exhibitors, setExhibitors] = useState<Company[]>([]);
   const [sponsors, setSponsors] = useState<Company[]>([]);
+  const [sustainabilityPartners, setSustainabilityPartners] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -26,7 +27,7 @@ const AdminDashboard = () => {
     name: '',
     description: '',
     website: '',
-    type: 'exhibitor' as 'exhibitor' | 'sponsor',
+    type: 'exhibitor' as 'exhibitor' | 'sponsor' | 'sustainability-partner',
     logo_url: ''
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
@@ -49,6 +50,7 @@ const AdminDashboard = () => {
       setCompanies(allCompanies);
       setExhibitors(allCompanies.filter(c => c.type === 'exhibitor'));
       setSponsors(allCompanies.filter(c => c.type === 'sponsor'));
+      setSustainabilityPartners(allCompanies.filter(c => c.type === 'sustainability-partner'));
     }
     setLoading(false);
   };
@@ -198,7 +200,7 @@ const AdminDashboard = () => {
                       <Label htmlFor="type">Type *</Label>
                       <Select
                         value={formData.type}
-                        onValueChange={(value: 'exhibitor' | 'sponsor') => 
+                        onValueChange={(value: 'exhibitor' | 'sponsor' | 'sustainability-partner') => 
                           setFormData({ ...formData, type: value })
                         }
                       >
@@ -208,6 +210,7 @@ const AdminDashboard = () => {
                         <SelectContent>
                           <SelectItem value="exhibitor">Exhibitor</SelectItem>
                           <SelectItem value="sponsor">Sponsor</SelectItem>
+                          <SelectItem value="sustainability-partner">Sustainability Partner</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -371,6 +374,75 @@ const AdminDashboard = () => {
                                 <h3 className="font-semibold">{company.name}</h3>
                                 <span className="text-xs text-muted-foreground capitalize">
                                   {company.type}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {company.description}
+                          </p>
+                          
+                          {company.website && (
+                            <a 
+                              href={company.website} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-xs text-primary hover:underline block truncate"
+                            >
+                              {company.website}
+                            </a>
+                          )}
+
+                          <div className="flex gap-2 pt-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleEdit(company)}
+                            >
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="destructive"
+                              onClick={() => handleDelete(company.id)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Sustainability Partners Section */}
+                <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
+                  <h2 className="text-2xl font-bold mb-6">
+                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                      Sustainability Partners ({sustainabilityPartners.length})
+                    </span>
+                  </h2>
+                  
+                  {sustainabilityPartners.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      No sustainability partners added yet.
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {sustainabilityPartners.map((company) => (
+                        <div key={company.id} className="border rounded-lg p-4 space-y-3">
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-center gap-3">
+                              <img 
+                                src={company.logo_url} 
+                                alt={company.name}
+                                className="w-12 h-12 object-contain rounded"
+                              />
+                              <div>
+                                <h3 className="font-semibold">{company.name}</h3>
+                                <span className="text-xs text-muted-foreground capitalize">
+                                  Sustainability Partner
                                 </span>
                               </div>
                             </div>

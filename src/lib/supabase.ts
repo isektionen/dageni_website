@@ -16,7 +16,7 @@ export type Company = {
   description: string;
   logo_url: string;
   website?: string;
-  type: 'exhibitor' | 'sponsor';
+  type: 'exhibitor' | 'sponsor' | 'sustainability-partner';
   created_at: string;
   updated_at: string;
 };

@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.companies (
     description TEXT NOT NULL,
     logo_url TEXT NOT NULL,
     website TEXT,
-    type TEXT NOT NULL CHECK (type IN ('exhibitor', 'sponsor')),
+    type TEXT NOT NULL CHECK (type IN ('exhibitor', 'sponsor', 'sustainability-partner')),
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
