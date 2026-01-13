@@ -1,4 +1,4 @@
-import { ArrowLeft, Users, Calendar, Briefcase, GraduationCap } from "lucide-react";
+import { ArrowLeft, Users, Calendar, Briefcase, GraduationCap, Download, ExternalLink } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
@@ -140,8 +140,21 @@ const ForStudents = () => {
               <section id="company-catalog" className="scroll-mt-24">
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Company Catalog</h2>
                 <p className="text-muted-foreground mb-6">Browse our comprehensive catalog featuring all exhibiting companies, their offerings, and contact information.</p>
-                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                  <p className="text-muted-foreground text-center">The company catalog PDF will be available soon. Check back later to view or download the complete guide.</p>
+                
+                {/* Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild size="lg">
+                    <a href="/company_catalog.pdf" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View PDF
+                    </a>
+                  </Button>
+                  <Button asChild size="lg" variant="outline">
+                    <a href="/company_catalog.pdf" download="Dagen_I_Company_Catalog.pdf">
+                      <Download className="mr-2 h-4 w-4" />
+                      Download PDF
+                    </a>
+                  </Button>
                 </div>
               </section>
 

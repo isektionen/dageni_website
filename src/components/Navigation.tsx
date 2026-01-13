@@ -53,7 +53,13 @@ export const Navigation = () => {
                   to="/our-exhibitors" 
                   className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors first:pt-3 last:pb-3"
                 >
-                  Our exhibitors
+                  Our Exhibitors
+                </Link>
+                <Link 
+                  to="/for-students#company-catalog" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Company Catalog
                 </Link>
                 <Link 
                   to="/for-students#events" 
@@ -66,6 +72,12 @@ export const Navigation = () => {
                   className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   Our Sponsors
+                </Link>
+                <Link 
+                  to="/for-students#our-sustainability-partners" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Our Sustainability Partners
                 </Link>
                 <Link 
                   to="/for-students#contact-meetings" 
