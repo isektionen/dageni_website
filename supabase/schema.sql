@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS public.companies (
     logo_url TEXT NOT NULL,
     website TEXT,
     type TEXT NOT NULL CHECK (type IN ('exhibitor', 'sponsor', 'sustainability-partner')),
+    is_main_partner BOOLEAN DEFAULT false,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );

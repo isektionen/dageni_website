@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
@@ -28,7 +29,8 @@ const AdminDashboard = () => {
     description: '',
     website: '',
     type: 'exhibitor' as 'exhibitor' | 'sponsor' | 'sustainability-partner',
-    logo_url: ''
+    logo_url: '',
+    is_main_partner: false
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
 
@@ -91,6 +93,7 @@ const AdminDashboard = () => {
         website: formData.website || null,
         type: formData.type,
         logo_url: logoUrl,
+        is_main_partner: formData.type === 'exhibitor' ? formData.is_main_partner : false,
       };
 
       if (editingId) {
@@ -111,7 +114,7 @@ const AdminDashboard = () => {
       }
 
       // Reset form
-      setFormData({ name: '', description: '', website: '', type: 'exhibitor', logo_url: '' });
+      setFormData({ name: '', description: '', website: '', type: 'exhibitor', logo_url: '', is_main_partner: false });
       setLogoFile(null);
       setEditingId(null);
       setShowForm(false);
@@ -130,7 +133,8 @@ const AdminDashboard = () => {
       description: company.description,
       website: company.website || '',
       type: company.type,
-      logo_url: company.logo_url
+      logo_url: company.logo_url,
+      is_main_partner: company.is_main_partner || false
     });
     setEditingId(company.id);
     setShowForm(true);
@@ -153,7 +157,7 @@ const AdminDashboard = () => {
   };
 
   const cancelEdit = () => {
-    setFormData({ name: '', description: '', website: '', type: 'exhibitor', logo_url: '' });
+    setFormData({ name: '', description: '', website: '', type: 'exhibitor', logo_url: '', is_main_partner: false });
     setLogoFile(null);
     setEditingId(null);
     setShowForm(false);
@@ -215,6 +219,24 @@ const AdminDashboard = () => {
                       </Select>
                     </div>
                   </div>
+
+                  {formData.type === 'exhibitor' && (
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="is_main_partner"
+                        checked={formData.is_main_partner}
+                        onCheckedChange={(checked) => 
+                          setFormData({ ...formData, is_main_partner: checked as boolean })
+                        }
+                      />
+                      <Label 
+                        htmlFor="is_main_partner" 
+                        className="text-sm font-normal cursor-pointer"
+                      >
+                        Mark as Main Partner (will be displayed prominently on Our Exhibitors page)
+                      </Label>
+                    </div>
+                  )}
 
                   <div>
                     <Label htmlFor="website">Website URL</Label>

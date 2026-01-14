@@ -9,6 +9,7 @@ import ourExhibitorsImg from "@/assets/dagenipic3_optimized.jpg";
 
 const OurExhibitors = () => {
   const [exhibitors, setExhibitors] = useState<Company[]>([]);
+  const [mainPartners, setMainPartners] = useState<Company[]>([]);
   const [sponsors, setSponsors] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,36 +30,57 @@ const OurExhibitors = () => {
     } else {
       const exhibitorsList = data?.filter(c => c.type === 'exhibitor') || [];
       const sponsorsList = data?.filter(c => c.type === 'sponsor') || [];
-      setExhibitors(exhibitorsList);
+      
+      // Separate main partners from regular exhibitors
+      const mainPartnersList = exhibitorsList.filter(c => c.is_main_partner);
+      const regularExhibitors = exhibitorsList.filter(c => !c.is_main_partner);
+      
+      setMainPartners(mainPartnersList);
+      setExhibitors(regularExhibitors);
       setSponsors(sponsorsList);
     }
     
     setLoading(false);
   };
 
-  const CompanyCard = ({ company }: { company: Company }) => (
-    <div className="bg-card rounded-2xl p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+  const CompanyCard = ({ company, isMainPartner = false }: { company: Company; isMainPartner?: boolean }) => (
+    <div className={`bg-card rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-shadow ${
+      isMainPartner ? 'md:col-span-2 lg:col-span-3 p-10 md:p-14' : 'p-6'
+    }`}>
       <div className="flex items-start gap-4 mb-4">
         <img 
           src={company.logo_url} 
           alt={`${company.name} logo`}
-          className="w-16 h-16 object-contain rounded bg-white p-2"
+          className={`object-contain rounded bg-white p-2 ${
+            isMainPartner ? 'w-32 h-32 md:w-40 md:h-40' : 'w-16 h-16'
+          }`}
         />
         <div className="flex-1">
-          <h3 className="text-xl font-bold font-display mb-1">{company.name}</h3>
+          {isMainPartner && (
+            <span className="inline-block bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm md:text-base font-semibold px-4 py-1.5 rounded-full mb-3">
+              Main Partner
+            </span>
+          )}
+          <h3 className={`font-bold font-display mb-1 ${
+            isMainPartner ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-xl'
+          }`}>{company.name}</h3>
           {company.website && (
             <a 
               href={company.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
+              className={`text-primary hover:underline ${
+                isMainPartner ? 'text-base md:text-lg' : 'text-sm'
+              }`}
             >
               Visit website →
             </a>
           )}
         </div>
       </div>
-      <p className="text-muted-foreground leading-relaxed">{company.description}</p>
+      <p className={`text-muted-foreground leading-relaxed ${
+        isMainPartner ? 'text-lg md:text-xl' : ''
+      }`}>{company.description}</p>
     </div>
   );
 
@@ -103,15 +125,20 @@ const OurExhibitors = () => {
               </div>
             ) : (
               <div className="max-w-6xl mx-auto space-y-16">
-                {/* Exhibitors Section */}
+                {/* Exhibitors Section (including Main Partners) */}
                 <div>
                   <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
                     <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                       Exhibitors
                     </span>
                   </h2>
-                  {exhibitors.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {(mainPartners.length > 0 || exhibitors.length > 0) ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {/* Main Partners first */}
+                      {mainPartners.map((company) => (
+                        <CompanyCard key={company.id} company={company} isMainPartner={true} />
+                      ))}
+                      {/* Regular Exhibitors */}
                       {exhibitors.map((company) => (
                         <CompanyCard key={company.id} company={company} />
                       ))}
