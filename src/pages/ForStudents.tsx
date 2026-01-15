@@ -6,14 +6,16 @@ import { Footer } from "@/components/Footer";
 import studentsHero from "@/assets/dagenipic1_optimized.jpg";
 import sponsorsImg from "@/assets/dagenipic4.jpg";
 import { useEffect, useState } from "react";
-import { supabase, Company } from "@/lib/supabase";
+import { supabase, Company, Event } from "@/lib/supabase";
 
 const ForStudents = () => {
   const { hash } = useLocation();
   const [sponsors, setSponsors] = useState<Company[]>([]);
   const [sustainabilityPartners, setSustainabilityPartners] = useState<Company[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loadingSponsors, setLoadingSponsors] = useState(true);
   const [loadingSustainabilityPartners, setLoadingSustainabilityPartners] = useState(true);
+  const [loadingEvents, setLoadingEvents] = useState(true);
 
   useEffect(() => {
     if (hash) {
@@ -28,6 +30,7 @@ const ForStudents = () => {
   useEffect(() => {
     fetchSponsors();
     fetchSustainabilityPartners();
+    fetchEvents();
   }, []);
 
   const fetchSponsors = async () => {
@@ -66,6 +69,23 @@ const ForStudents = () => {
     setLoadingSustainabilityPartners(false);
   };
 
+  const fetchEvents = async () => {
+    setLoadingEvents(true);
+    
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching events:', error);
+    } else {
+      setEvents(data || []);
+    }
+    
+    setLoadingEvents(false);
+  };
+
   const SponsorCard = ({ company }: { company: Company }) => (
     <div className="bg-card rounded-2xl p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start gap-4 mb-4">
@@ -89,6 +109,34 @@ const ForStudents = () => {
         </div>
       </div>
       <p className="text-muted-foreground leading-relaxed">{company.description}</p>
+    </div>
+  );
+
+  const EventCard = ({ event }: { event: Event }) => (
+    <div className="bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+      {event.image_url && (
+        <img 
+          src={event.image_url} 
+          alt={event.title}
+          className="w-full h-48 object-cover"
+        />
+      )}
+      <div className="p-6">
+        <h3 className="text-xl font-bold font-display mb-3">{event.title}</h3>
+        <p className="text-muted-foreground leading-relaxed mb-4">{event.description}</p>
+        {event.link && (
+          <Button asChild size="sm">
+            <a 
+              href={event.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="mr-2 h-4 w-4" />
+              Register
+            </a>
+          </Button>
+        )}
+      </div>
     </div>
   );
 
@@ -161,10 +209,24 @@ const ForStudents = () => {
               {/* Events Section */}
               <section id="events" className="scroll-mt-24">
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Events</h2>
-                <p className="text-muted-foreground">Talks, workshops, and activities during the fair.</p>
-                <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20 mt-6">
-                  <p className="text-muted-foreground">Events leading up to Dagen I 2026 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
-                </div>
+                <p className="text-muted-foreground mb-6">Talks, workshops, and activities during the fair.</p>
+                
+                {loadingEvents ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading events...</p>
+                  </div>
+                ) : events.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {events.map((event) => (
+                      <EventCard key={event.id} event={event} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
+                    <p className="text-muted-foreground">Events leading up to Dagen I 2026 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
+                  </div>
+                )}
               </section>
 
               {/* Our Sponsors Section */}

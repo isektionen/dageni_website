@@ -21,3 +21,13 @@ export type Company = {
   created_at: string;
   updated_at: string;
 };
+
+export type Event = {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  link?: string;
+  created_at: string;
+  updated_at: string;
+};

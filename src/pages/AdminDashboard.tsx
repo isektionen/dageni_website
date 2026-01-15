@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { supabase, Company } from '@/lib/supabase';
+import { supabase, Company, Event } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -18,9 +18,12 @@ const AdminDashboard = () => {
   const [exhibitors, setExhibitors] = useState<Company[]>([]);
   const [sponsors, setSponsors] = useState<Company[]>([]);
   const [sustainabilityPartners, setSustainabilityPartners] = useState<Company[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [showEventForm, setShowEventForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingEventId, setEditingEventId] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   
   // Form state
@@ -33,9 +36,19 @@ const AdminDashboard = () => {
     is_main_partner: false
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
+  
+  // Event form state
+  const [eventFormData, setEventFormData] = useState({
+    title: '',
+    description: '',
+    link: '',
+    image_url: ''
+  });
+  const [eventImageFile, setEventImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     fetchCompanies();
+    fetchEvents();
   }, []);
 
   const fetchCompanies = async () => {
@@ -55,6 +68,19 @@ const AdminDashboard = () => {
       setSustainabilityPartners(allCompanies.filter(c => c.type === 'sustainability-partner'));
     }
     setLoading(false);
+  };
+
+  const fetchEvents = async () => {
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) {
+      console.error('Error fetching events:', error);
+    } else {
+      setEvents(data || []);
+    }
   };
 
   const uploadLogo = async (file: File): Promise<string> => {
@@ -161,6 +187,109 @@ const AdminDashboard = () => {
     setLogoFile(null);
     setEditingId(null);
     setShowForm(false);
+  };
+
+  // Event CRUD functions
+  const uploadEventImage = async (file: File): Promise<string> => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('event-images')
+      .upload(filePath, file, { upsert: true });
+
+    if (uploadError) throw uploadError;
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('event-images')
+      .getPublicUrl(filePath);
+
+    return publicUrl;
+  };
+
+  const handleEventSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUploading(true);
+
+    try {
+      let imageUrl = eventFormData.image_url;
+      
+      // Upload new image if file selected
+      if (eventImageFile) {
+        imageUrl = await uploadEventImage(eventImageFile);
+      }
+
+      const eventData = {
+        title: eventFormData.title,
+        description: eventFormData.description,
+        link: eventFormData.link || null,
+        image_url: imageUrl,
+      };
+
+      if (editingEventId) {
+        // Update existing event
+        const { error } = await supabase
+          .from('events')
+          .update(eventData)
+          .eq('id', editingEventId);
+        
+        if (error) throw error;
+      } else {
+        // Create new event
+        const { error } = await supabase
+          .from('events')
+          .insert([eventData]);
+        
+        if (error) throw error;
+      }
+
+      // Reset form
+      setEventFormData({ title: '', description: '', link: '', image_url: '' });
+      setEventImageFile(null);
+      setEditingEventId(null);
+      setShowEventForm(false);
+      fetchEvents();
+    } catch (error) {
+      console.error('Error saving event:', error);
+      alert('Failed to save event. Please try again.');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleEventEdit = (event: Event) => {
+    setEventFormData({
+      title: event.title,
+      description: event.description,
+      link: event.link || '',
+      image_url: event.image_url
+    });
+    setEditingEventId(event.id);
+    setShowEventForm(true);
+  };
+
+  const handleEventDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this event?')) return;
+
+    const { error } = await supabase
+      .from('events')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting event:', error);
+      alert('Failed to delete event');
+    } else {
+      fetchEvents();
+    }
+  };
+
+  const cancelEventEdit = () => {
+    setEventFormData({ title: '', description: '', link: '', image_url: '' });
+    setEventImageFile(null);
+    setEditingEventId(null);
+    setShowEventForm(false);
   };
 
   return (
@@ -289,10 +418,86 @@ const AdminDashboard = () => {
                 </form>
               </div>
             ) : (
-              <Button onClick={() => setShowForm(true)} className="mb-8">
-                <Plus className="mr-2 h-4 w-4" />
-                Add New Company
-              </Button>
+              <div className="flex gap-4 mb-8">
+                <Button onClick={() => setShowForm(true)}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add New Company
+                </Button>
+                <Button onClick={() => setShowEventForm(true)} variant="secondary">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add New Event
+                </Button>
+              </div>
+            )}
+
+            {/* Add/Edit Event Form */}
+            {showEventForm && (
+              <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg mb-8">
+                <h2 className="text-2xl font-bold mb-6">
+                  {editingEventId ? 'Edit Event' : 'Add New Event'}
+                </h2>
+                
+                <form onSubmit={handleEventSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="event-title">Event Title *</Label>
+                    <Input
+                      id="event-title"
+                      value={eventFormData.title}
+                      onChange={(e) => setEventFormData({ ...eventFormData, title: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="event-description">Description *</Label>
+                    <Textarea
+                      id="event-description"
+                      value={eventFormData.description}
+                      onChange={(e) => setEventFormData({ ...eventFormData, description: e.target.value })}
+                      required
+                      rows={4}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="event-link">Link (Google Form, etc.)</Label>
+                    <Input
+                      id="event-link"
+                      type="url"
+                      placeholder="https://forms.google.com/..."
+                      value={eventFormData.link}
+                      onChange={(e) => setEventFormData({ ...eventFormData, link: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="event-image">Event Image *</Label>
+                    <div className="flex items-center gap-4">
+                      <Input
+                        id="event-image"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setEventImageFile(e.target.files?.[0] || null)}
+                      />
+                      {eventFormData.image_url && !eventImageFile && (
+                        <img src={eventFormData.image_url} alt="Current image" className="h-12 w-12 object-cover rounded" />
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {editingEventId && !eventImageFile ? 'Leave empty to keep current image' : 'Upload an event image (PNG, JPG)'}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button type="submit" disabled={uploading}>
+                      {uploading ? 'Saving...' : editingEventId ? 'Update Event' : 'Add Event'}
+                    </Button>
+                    <Button type="button" variant="outline" onClick={cancelEventEdit}>
+                      Cancel
+                    </Button>
+                  </div>
+                </form>
+              </div>
             )}
 
             {/* Companies List - Split by Type */}
@@ -497,6 +702,74 @@ const AdminDashboard = () => {
                               size="sm"
                               variant="destructive"
                               onClick={() => handleDelete(company.id)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Events Section */}
+                <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
+                  <h2 className="text-2xl font-bold mb-6">
+                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                      Events ({events.length})
+                    </span>
+                  </h2>
+                  
+                  {events.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      No events added yet.
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {events.map((event) => (
+                        <div key={event.id} className="border rounded-lg p-4 space-y-3">
+                          <div className="flex items-start justify-between">
+                            <div className="flex-1">
+                              <h3 className="font-semibold">{event.title}</h3>
+                              <span className="text-xs text-muted-foreground">Event</span>
+                            </div>
+                          </div>
+                          
+                          {event.image_url && (
+                            <img 
+                              src={event.image_url} 
+                              alt={event.title}
+                              className="w-full h-32 object-cover rounded"
+                            />
+                          )}
+                          
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {event.description}
+                          </p>
+                          
+                          {event.link && (
+                            <a 
+                              href={event.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-xs text-primary hover:underline block truncate"
+                            >
+                              {event.link}
+                            </a>
+                          )}
+
+                          <div className="flex gap-2 pt-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleEventEdit(event)}
+                            >
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="destructive"
+                              onClick={() => handleEventDelete(event.id)}
                             >
                               <Trash2 className="h-4 w-4" />
                             </Button>
