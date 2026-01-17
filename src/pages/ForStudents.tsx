@@ -112,33 +112,51 @@ const ForStudents = () => {
     </div>
   );
 
-  const EventCard = ({ event }: { event: Event }) => (
-    <div className="bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-shadow">
-      {event.image_url && (
-        <img 
-          src={event.image_url} 
-          alt={event.title}
-          className="w-full h-48 object-cover"
-        />
-      )}
-      <div className="p-6">
-        <h3 className="text-xl font-bold font-display mb-3">{event.title}</h3>
-        <p className="text-muted-foreground leading-relaxed mb-4">{event.description}</p>
-        {event.link && (
-          <Button asChild size="sm">
-            <a 
-              href={event.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              Register
-            </a>
-          </Button>
+  const EventCard = ({ event }: { event: Event }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const wordLimit = 50;
+    const words = event.description.split(' ');
+    const shouldTruncate = words.length > wordLimit;
+    const displayText = isExpanded || !shouldTruncate
+      ? event.description
+      : words.slice(0, wordLimit).join(' ') + '...';
+
+    return (
+      <div className="bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+        {event.image_url && (
+          <img 
+            src={event.image_url} 
+            alt={event.title}
+            className="w-full h-48 object-cover"
+          />
         )}
+        <div className="p-6">
+          <h3 className="text-xl font-bold font-display mb-3">{event.title}</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">{displayText}</p>
+          {shouldTruncate && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-primary hover:underline text-sm font-medium mb-4 block"
+            >
+              {isExpanded ? 'See less' : 'See more'}
+            </button>
+          )}
+          {event.link && (
+            <Button asChild size="sm" className="mt-4">
+              <a 
+                href={event.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Register
+              </a>
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -199,6 +217,28 @@ const ForStudents = () => {
                   </Button>
                   <Button asChild size="lg" variant="outline">
                     <a href="/company_catalog.pdf" download="Dagen_I_Company_Catalog.pdf">
+                      <Download className="mr-2 h-4 w-4" />
+                      Download PDF
+                    </a>
+                  </Button>
+                </div>
+              </section>
+
+              {/* Dagen I Map Section */}
+              <section id="dageni-map" className="scroll-mt-24">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Dagen I Map</h2>
+                <p className="text-muted-foreground mb-6">Navigate the fair with our comprehensive map showing all exhibitor locations.</p>
+                
+                {/* Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild size="lg">
+                    <a href="/dageni_map.pdf" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View PDF
+                    </a>
+                  </Button>
+                  <Button asChild size="lg" variant="outline">
+                    <a href="/dageni_map.pdf" download="Dagen_I_Map.pdf">
                       <Download className="mr-2 h-4 w-4" />
                       Download PDF
                     </a>

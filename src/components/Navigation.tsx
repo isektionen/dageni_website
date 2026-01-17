@@ -62,6 +62,12 @@ export const Navigation = () => {
                   Company Catalog
                 </Link>
                 <Link 
+                  to="/for-students#dageni-map" 
+                  className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                >
+                  Dagen I Map
+                </Link>
+                <Link 
                   to="/for-students#events" 
                   className="block px-4 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
@@ -194,11 +200,20 @@ export const Navigation = () => {
                 <Link to="/our-exhibitors" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Our Exhibitors</Button>
                 </Link>
+                <Link to="/for-students#company-catalog" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Company Catalog</Button>
+                </Link>
+                <Link to="/for-students#dageni-map" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Dagen I Map</Button>
+                </Link>
                 <Link to="/for-students#events" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Events</Button>
                 </Link>
                 <Link to="/for-students#our-sponsors" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Our Sponsors</Button>
+                </Link>
+                <Link to="/for-students#our-sustainability-partners" onClick={handleLinkClick}>
+                  <Button variant="ghost" className="w-full justify-start text-sm">Our Sustainability Partners</Button>
                 </Link>
                 <Link to="/for-students#contact-meetings" onClick={handleLinkClick}>
                   <Button variant="ghost" className="w-full justify-start text-sm">Contact Meetings</Button>
