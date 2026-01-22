@@ -121,7 +121,7 @@ export const Footer = () => {
                 © 2026 Dagen I. All rights reserved.
               </p>
               <p className="text-muted-foreground/80 text-xs mt-1">
-                Developed by I-chapter's IT-group
+                Developed Kasper Gundewall
               </p>
             </div>
             <div className="flex items-center space-x-6 text-sm">
