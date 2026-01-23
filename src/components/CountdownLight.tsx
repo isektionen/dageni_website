@@ -49,6 +49,21 @@ export const CountdownLight = () => {
     </div>
   );
 
+  // Check if the event has started
+  const hasStarted = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+
+  if (hasStarted) {
+    return (
+      <div className="flex justify-center">
+        <div className="bg-card px-8 py-6 sm:px-12 sm:py-8 rounded-2xl border border-primary/40 shadow-lg">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient-shift bg-200%">
+            Dagen I has started!
+          </h2>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
       <TimeUnit value={timeLeft.days} label="Days" />
