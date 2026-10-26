@@ -242,7 +242,7 @@ export default function Companies() {
                 
                 <div className="text-center space-y-4">
                   <p className="text-muted-foreground leading-relaxed">
-                    Interested in participating in Dagen I 2026? We'd love to hear from you!
+                    Interested in participating in Dagen I 2027? We'd love to hear from you!
                   </p>
                   
                   <div className="space-y-2">

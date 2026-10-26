@@ -103,7 +103,7 @@ const OurExhibitors = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the companies joining Dagen I 2026
+              Meet the companies joining Dagen I 2027
             </p>
           </div>
         </section>
@@ -146,7 +146,7 @@ const OurExhibitors = () => {
                   ) : (
                     <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20 text-center">
                       <p className="text-muted-foreground">
-                        Our exhibitors for Dagen I 2026 will be announced soon. Stay tuned to see the amazing companies 
+                        Our exhibitors for Dagen I 2027 will be announced soon. Stay tuned to see the amazing companies 
                         that will be showcasing their opportunities and connecting with talented students.
                       </p>
                     </div>

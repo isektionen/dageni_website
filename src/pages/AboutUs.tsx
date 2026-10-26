@@ -61,7 +61,7 @@ const AboutUs = () => {
                 </h2>
                 <h2 className="text-1xl sm:text-3xl font-display mb-12">
                   <span className="text-center text-foreground/80">
-                    2025/2026
+                    2026/2027
                   </span>
                 </h2>
                 

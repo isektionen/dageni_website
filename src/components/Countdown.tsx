@@ -8,8 +8,8 @@ interface TimeLeft {
 }
 
 export const Countdown = () => {
-  // January 23, 2026 at 10:00 AM - Event date
-  const targetDate = useMemo(() => new Date("2026-01-23T10:00:00").getTime(), []);
+  // February 12, 2027 at 10:00 AM - Event date
+  const targetDate = useMemo(() => new Date("2027-02-12T10:00:00").getTime(), []);
   
   const calculateTimeLeft = useCallback((): TimeLeft => {
     const now = Date.now(); // More performant than new Date().getTime()

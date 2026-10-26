@@ -264,7 +264,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Events leading up to Dagen I 2026 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
+                    <p className="text-muted-foreground">Events leading up to Dagen I 2027 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
                   </div>
                 )}
               </section>
@@ -286,7 +286,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Our sponsors for Dagen I 2026 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
+                    <p className="text-muted-foreground">Our sponsors for Dagen I 2027 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
                   </div>
                 )}
               </section>
@@ -312,7 +312,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Our sustainability partners for Dagen I 2026 will be announced soon. Stay tuned to see the amazing organizations supporting our commitment to sustainability.</p>
+                    <p className="text-muted-foreground">Our sustainability partners for Dagen I 2027 will be announced soon. Stay tuned to see the amazing organizations supporting our commitment to sustainability.</p>
                   </div>
                 )}
               </section>

@@ -8,7 +8,7 @@ interface TimeLeft {
 }
 
 export const CountdownLight = () => {
-  const targetDate = useMemo(() => new Date("2026-01-23T10:00:00").getTime(), []);
+  const targetDate = useMemo(() => new Date("2027-02-12T10:00:00").getTime(), []);
   
   const calculateTimeLeft = useCallback((): TimeLeft => {
     const now = Date.now();

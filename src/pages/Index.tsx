@@ -35,7 +35,7 @@ const Index = () => {
               </div>
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-foreground/80 mb-4">
-                  23 January 2026
+                  12 February 2027
                 </h2>
               </div>
               <div>
@@ -90,7 +90,7 @@ const Index = () => {
               <div>
                 <h3 className="text-xl font-bold font-display mb-3 text-foreground">What</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Dagen I is the annual career fair for Industrial Engineering and Management students, taking place at the end of January 2026. Since 2011, it has been a key event where students from the Master of Science in Engineering and Master's programs connect with potential employers. Dagen I provides opportunities to engage with industry and form relationships that can lead to future career prospects. It's a chance to gain exclusive insights into companies and prepare for life after graduation.
+                  Dagen I is the annual career fair for Industrial Engineering and Management students, taking place on 12 February 2027. Since 2011, it has been a key event where students from the Master of Science in Engineering and Master's programs connect with potential employers. Dagen I provides opportunities to engage with industry and form relationships that can lead to future career prospects. It's a chance to gain exclusive insights into companies and prepare for life after graduation.
                 </p>
               </div>
               
@@ -136,7 +136,7 @@ const Index = () => {
             <SectionCard
               id="our-exhibitors"
               title="Our Exhibitors"
-              description="Read more about the exhibitors of Dagen I 2026. Meet leading companies from various industries, learn about their missions, and explore potential career paths with organizations that are shaping the future."
+              description="Read more about the exhibitors of Dagen I 2027. Meet leading companies from various industries, learn about their missions, and explore potential career paths with organizations that are shaping the future."
               image={ourExhibitorsImg}
               link="/our-exhibitors"
               gradient="primary"

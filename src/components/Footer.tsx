@@ -118,14 +118,14 @@ export const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-center sm:text-left">
               <p className="text-muted-foreground text-sm">
-                © 2026 Dagen I. All rights reserved.
+                © 2027 Dagen I. All rights reserved.
               </p>
               <p className="text-muted-foreground/80 text-xs mt-1">
                 Developed by <a href="https://k43p5r.github.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Kasper Gundewall</a>
               </p>
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <span className="text-muted-foreground">January 23, 2026</span>
+              <span className="text-muted-foreground">February 12, 2027</span>
               <span className="text-primary font-medium">Nymble, Stockholm</span>
               <button 
                 onClick={handleAdminClick}

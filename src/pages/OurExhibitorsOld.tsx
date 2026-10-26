@@ -195,7 +195,7 @@ const OurExhibitors = () => {
               {/* Introduction */}
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Get ready to meet the companies that will be exhibiting at Dagen I 2026!
+                  Get ready to meet the companies that will be exhibiting at Dagen I 2027!
                 </p>
               </div>
 
@@ -207,7 +207,7 @@ const OurExhibitors = () => {
                   </span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
-                  Our exhibitors for Dagen I 2026 will be announced soon! We're working with amazing companies from various industries to bring you the best career fair experience. Stay tuned to discover the innovative organizations that will be showcasing their opportunities and connecting with talented students.
+                  Our exhibitors for Dagen I 2027 will be announced soon! We're working with amazing companies from various industries to bring you the best career fair experience. Stay tuned to discover the innovative organizations that will be showcasing their opportunities and connecting with talented students.
                 </p>
               </div>
 
