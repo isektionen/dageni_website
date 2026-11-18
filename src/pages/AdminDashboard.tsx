@@ -10,6 +10,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ContentEditor } from '@/components/admin/ContentEditor';
+import { TeamEditor } from '@/components/admin/TeamEditor';
 import { Plus, Trash2, Edit, LogOut, Upload } from 'lucide-react';
 
 const AdminDashboard = () => {
@@ -310,6 +313,29 @@ const AdminDashboard = () => {
               </Button>
             </div>
 
+            <Tabs defaultValue="companies">
+              <TabsList className="mb-8 flex-wrap h-auto">
+                <TabsTrigger value="companies">Companies & Events</TabsTrigger>
+                <TabsTrigger value="settings">Settings & Links</TabsTrigger>
+                <TabsTrigger value="texts">Texts</TabsTrigger>
+                <TabsTrigger value="images">Images & Files</TabsTrigger>
+                <TabsTrigger value="team">Team</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="settings">
+                <ContentEditor group="settings" />
+              </TabsContent>
+              <TabsContent value="texts">
+                <ContentEditor group="texts" />
+              </TabsContent>
+              <TabsContent value="images">
+                <ContentEditor group="images" />
+              </TabsContent>
+              <TabsContent value="team">
+                <TeamEditor />
+              </TabsContent>
+
+              <TabsContent value="companies">
             {/* Add/Edit Form */}
             {showForm ? (
               <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg mb-8">
@@ -781,6 +807,8 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
 

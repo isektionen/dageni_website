@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { supabase, Company } from "@/lib/supabase";
-import ourExhibitorsImg from "@/assets/dagenipic3_optimized.jpg";
+import { useSiteContent } from "@/lib/content";
 
 const OurExhibitors = () => {
   const [exhibitors, setExhibitors] = useState<Company[]>([]);
   const [mainPartners, setMainPartners] = useState<Company[]>([]);
   const [sponsors, setSponsors] = useState<Company[]>([]);
   const [loading, setLoading] = useState(true);
+  const content = useSiteContent();
 
   useEffect(() => {
     fetchCompanies();
@@ -92,7 +93,7 @@ const OurExhibitors = () => {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img src={ourExhibitorsImg} alt="Our exhibitors" className="w-full h-full object-cover" />
+            <img src={content.img_exhibitors_hero} alt="Our exhibitors" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
           
@@ -103,7 +104,7 @@ const OurExhibitors = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the companies joining Dagen I 2027
+              {content.exhibitors_hero_subtitle}
             </p>
           </div>
         </section>
@@ -146,8 +147,7 @@ const OurExhibitors = () => {
                   ) : (
                     <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20 text-center">
                       <p className="text-muted-foreground">
-                        Our exhibitors for Dagen I 2027 will be announced soon. Stay tuned to see the amazing companies 
-                        that will be showcasing their opportunities and connecting with talented students.
+                        {content.exhibitors_empty}
                       </p>
                     </div>
                   )}

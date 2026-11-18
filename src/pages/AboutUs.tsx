@@ -3,19 +3,40 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import aboutUsImg from "@/assets/cover_all.jpg";
-import projectManager from "@/assets/Project_manager.jpg";
-import deputyProjectManager from "@/assets/Deputy_project_manager.jpg";
-import headOfBanquet from "@/assets/Head_of_banquet.jpg";
-import headOfBranding from "@/assets/Head_of_branding.jpg";
-import headOfBusinessRelations from "@/assets/Head_of_buisness_relations.jpg";
-import headOfCommunicationAndHR from "@/assets/Head_of_communication_and_HR.jpg";
-import headOfEvents from "@/assets/Head_of_events.jpg";
-import headOfLogistics from "@/assets/Head_of_logistics.jpg";
-import headOfLounge from "@/assets/Head_of_Lounge.jpg";
-import headOfMarketing from "@/assets/Head_of_marketing.jpg";
+import { TeamMember, useSiteContent, useTeamMembers } from "@/lib/content";
+
+const MemberCard = ({ member }: { member: TeamMember }) => (
+  <div
+    className={
+      member.highlighted
+        ? "bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20"
+        : "bg-card rounded-2xl p-8 border border-border/50 shadow-card"
+    }
+  >
+    {member.image_url && (
+      <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
+        <img src={member.image_url} alt={member.role} className="w-full h-full object-cover" />
+      </div>
+    )}
+    <h3 className={`text-2xl font-bold font-display ${member.highlighted ? "mb-2" : ""}`}>{member.role}</h3>
+    <p className="text-lg font-semibold text-foreground mb-2">{member.name}</p>
+    {member.email && (
+      <div className="flex items-center justify-center space-x-2">
+        <Mail className="h-4 w-4 text-primary" />
+        <a href={`mailto:${member.email}`} className="text-primary hover:underline">
+          {member.email}
+        </a>
+      </div>
+    )}
+  </div>
+);
 
 const AboutUs = () => {
+  const content = useSiteContent();
+  const { team } = useTeamMembers();
+  const highlighted = team.filter((m) => m.highlighted);
+  const others = team.filter((m) => !m.highlighted);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -24,7 +45,7 @@ const AboutUs = () => {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img src={aboutUsImg} alt="Dagen I Team" className="w-full h-full object-cover" />
+            <img src={content.img_about_hero} alt="Dagen I Team" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
           
@@ -35,7 +56,7 @@ const AboutUs = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the passionate team behind Dagen I
+              {content.about_hero_subtitle}
             </p>
           </div>
         </section>
@@ -61,160 +82,26 @@ const AboutUs = () => {
                 </h2>
                 <h2 className="text-1xl sm:text-3xl font-display mb-12">
                   <span className="text-center text-foreground/80">
-                    2026/2027
+                    {content.committee_year}
                   </span>
                 </h2>
                 
-                {/* Top Level - Project Manager and Deputy Project Manager */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-                  <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={projectManager} alt="Project Manager" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display mb-2">Project Manager</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Robin Akela</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:projektledare@dageni.se" className="text-primary hover:underline">
-                        projektledare@dageni.se
-                      </a>
-                    </div>
+                {/* Highlighted members (e.g. project managers) */}
+                {highlighted.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+                    {highlighted.map((member) => (
+                      <MemberCard key={member.id} member={member} />
+                    ))}
                   </div>
-                  
-                  <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 rounded-3xl p-8 border border-primary/20">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={deputyProjectManager} alt="Deputy Project Manager" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display mb-2">Deputy Project Manager</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Edwin Taeby</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:vice@dageni.se" className="text-primary hover:underline">
-                        vice@dageni.se
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                )}
 
-                {/* Second Row - 3 Department Heads */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfBanquet} alt="Head of Banquet" className="w-full h-full object-cover" />
+                {/* Department heads, three per row with the last row centered */}
+                <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+                  {others.map((member) => (
+                    <div key={member.id} className="w-full md:w-[calc((100%-4rem)/3)]">
+                      <MemberCard member={member} />
                     </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Banquet</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Per Ihse</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:bankett@dageni.se" className="text-primary hover:underline">
-                        bankett@dageni.se
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfBusinessRelations} alt="Head of Business Relations" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Business Relations</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Filip Pring & Nasib Abbassoy</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:naringsliv@dageni.se" className="text-primary hover:underline">
-                        naringsliv@dageni.se
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfMarketing} alt="Head of Marketing" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Marketing</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Siri Kämpe</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:marknadsforing@dageni.se" className="text-primary hover:underline">
-                        marknadsforing@dageni.se
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Third Row - 3 Department Heads */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfCommunicationAndHR} alt="Head of Communication and HR" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Communication and HR</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Steve Henin</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:hr@iare.nu" className="text-primary hover:underline">
-                        hr@iare.nu
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfEvents} alt="Head of Events" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Events</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Vilhelm Janson & Alice Wänblad</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:event@dageni.se" className="text-primary hover:underline">
-                        event@dageni.se
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfLogistics} alt="Head of Logistics" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Logistics</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Elsa Berg & David Carlsson</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:logistik@dageni.se" className="text-primary hover:underline">
-                        logistik@dageni.se
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Row - 2 Department Heads */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfLounge} alt="Head of Lounge" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Lounge</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Linnea Neiderud</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:lounge@dageni.se" className="text-primary hover:underline">
-                        lounge@dageni.se
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-card">
-                    <div className="w-48 h-48 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg">
-                      <img src={headOfBranding} alt="Head of Branding" className="w-full h-full object-cover" />
-                    </div>
-                    <h3 className="text-2xl font-bold font-display">Head of Branding</h3>
-                    <p className="text-lg font-semibold text-foreground mb-2">Eddie Xia</p>
-                    <div className="flex items-center justify-center space-x-2">
-                      <Mail className="h-4 w-4 text-primary" />
-                      <a href="mailto:branding@dageni.se" className="text-primary hover:underline">
-                        branding@dageni.se
-                      </a>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
               
@@ -231,8 +118,7 @@ const AboutUs = () => {
                     <Target className="h-8 w-8 text-primary-foreground" />
                   </div>
                   <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                    Dagen I is dedicated to bridging the gap between talented engineering students and innovative companies. 
-                    Our mission is to create meaningful connections that shape the future of technology and engineering in Sweden.
+                    {content.about_mission}
                   </p>
                 </div>
               </div>

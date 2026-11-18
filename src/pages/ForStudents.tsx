@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import studentsHero from "@/assets/dagenipic1_optimized.jpg";
-import sponsorsImg from "@/assets/dagenipic4.jpg";
 import { useEffect, useState } from "react";
 import { supabase, Company, Event } from "@/lib/supabase";
+import { isOn, useSiteContent } from "@/lib/content";
 
 const ForStudents = () => {
   const { hash } = useLocation();
+  const content = useSiteContent();
   const [sponsors, setSponsors] = useState<Company[]>([]);
   const [sustainabilityPartners, setSustainabilityPartners] = useState<Company[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
@@ -166,7 +166,7 @@ const ForStudents = () => {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img src={studentsHero} alt="Students at career fair" className="w-full h-full object-cover" />
+            <img src={content.img_students_hero} alt="Students at career fair" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
           
@@ -177,7 +177,7 @@ const ForStudents = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Your gateway to exciting career opportunities
+              {content.students_hero_subtitle}
             </p>
           </div>
         </section>
@@ -210,13 +210,13 @@ const ForStudents = () => {
                 {/* Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <Button asChild size="lg">
-                    <a href="/company_catalog.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href={content.file_company_catalog} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       View PDF
                     </a>
                   </Button>
                   <Button asChild size="lg" variant="outline">
-                    <a href="/company_catalog.pdf" download="Dagen_I_Company_Catalog.pdf">
+                    <a href={content.file_company_catalog} download="Dagen_I_Company_Catalog.pdf">
                       <Download className="mr-2 h-4 w-4" />
                       Download PDF
                     </a>
@@ -232,13 +232,13 @@ const ForStudents = () => {
                 {/* Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <Button asChild size="lg">
-                    <a href="/dageni_map.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href={content.file_map} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
                       View PDF
                     </a>
                   </Button>
                   <Button asChild size="lg" variant="outline">
-                    <a href="/dageni_map.pdf" download="Dagen_I_Map.pdf">
+                    <a href={content.file_map} download="Dagen_I_Map.pdf">
                       <Download className="mr-2 h-4 w-4" />
                       Download PDF
                     </a>
@@ -264,7 +264,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Events leading up to Dagen I 2027 will be announced soon. Stay tuned for exciting networking opportunities, information sessions, and preparation meetings.</p>
+                    <p className="text-muted-foreground">{content.students_events_empty}</p>
                   </div>
                 )}
               </section>
@@ -286,7 +286,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Our sponsors for Dagen I 2027 will be announced soon. Stay tuned to see the amazing companies supporting our event and the next generation of engineers.</p>
+                    <p className="text-muted-foreground">{content.students_sponsors_empty}</p>
                   </div>
                 )}
               </section>
@@ -312,7 +312,7 @@ const ForStudents = () => {
                   </div>
                 ) : (
                   <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 border border-primary/20">
-                    <p className="text-muted-foreground">Our sustainability partners for Dagen I 2027 will be announced soon. Stay tuned to see the amazing organizations supporting our commitment to sustainability.</p>
+                    <p className="text-muted-foreground">{content.students_sustainability_empty}</p>
                   </div>
                 )}
               </section>
@@ -326,17 +326,23 @@ const ForStudents = () => {
                 </h2>
                 
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  During the fair day you will be offered contact meetings. These are simply conversations for about 20 minutes where you have the opportunity to talk to company representatives in calm. They can either be more focused on future jobs or more of a chance to ask someone in working life what to think about during their studies, what a normal working day looks like, what it thinks is important when looking for a job and more. You decide for yourself, but they are in any case eager to meet, regardless of grade!
+                  {content.students_contact_meetings}
                 </p>
                 
-                <div className="text-center p-4 bg-secondary/10 rounded-xl border border-secondary/20">
-                  <p className="text-secondary font-medium mb-4">Apply now for contact meetings!</p>
-                  <Button asChild size="lg" className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90">
-                    <a href="https://docs.google.com/forms/d/19LlssiCEgW7kSGM-QpvHpOIIImEPBhamU0wICQ_tJb8/viewform?fbclid=IwY2xjawPSHd1leHRuA2FlbQIxMABicmlkETBPVnVBcFZaRHNEbm9FeUFGc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHrGGTVZO_sp4ZgjMkbXuaf-TsnKSpcNcgMZYQkGBz7CsB-2mLOMjHBe-Xpcm_aem_WBfpbuZWBnVQxKk9UC09Sw&edit_requested=true" target="_blank" rel="noopener noreferrer">
-                      Apply Here
-                    </a>
-                  </Button>
-                </div>
+                {isOn(content.contact_meetings_open) && content.contact_meetings_url ? (
+                  <div className="text-center p-4 bg-secondary/10 rounded-xl border border-secondary/20">
+                    <p className="text-secondary font-medium mb-4">Apply now for contact meetings!</p>
+                    <Button asChild size="lg" className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90">
+                      <a href={content.contact_meetings_url} target="_blank" rel="noopener noreferrer">
+                        Apply Here
+                      </a>
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="text-center p-4 bg-muted/50 rounded-xl border border-muted">
+                    <p className="text-muted-foreground font-medium">Application has closed</p>
+                  </div>
+                )}
               </section>
 
               {/* Become a Host */}
@@ -352,20 +358,30 @@ const ForStudents = () => {
                     <div>
                       <h3 className="text-xl font-bold font-display mb-3 text-foreground">What is a company host?</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        As a host you will be responsible for the communication with a company before and during the fair. You will represent the chapter as the main contact person from our side and act as the company's helping hand when needed. The purpose is to make the communication and process smoother, for both parts.
+                        {content.students_host_what}
                       </p>
                     </div>
                     
                     <div>
                       <h3 className="text-xl font-bold font-display mb-3 text-foreground">What's in it for you?</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        This is your chance to network and gain valuable contact, and more importantly, guarantee a spot at the closing banquet. There will also be a kickoff for all company hosts.
+                        {content.students_host_why}
                       </p>
                     </div>
                     
-                    <div className="text-center p-4 bg-muted/50 rounded-xl border border-muted">
-                      <p className="text-muted-foreground font-medium">Application has closed</p>
-                    </div>
+                    {isOn(content.host_application_open) && content.host_application_url ? (
+                      <div className="text-center">
+                        <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                          <a href={content.host_application_url} target="_blank" rel="noopener noreferrer">
+                            Apply to Become a Host
+                          </a>
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="text-center p-4 bg-muted/50 rounded-xl border border-muted">
+                        <p className="text-muted-foreground font-medium">Application has closed</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </section>

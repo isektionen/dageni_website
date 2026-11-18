@@ -3,10 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useState } from "react";
+import { useSiteContent } from "@/lib/content";
 
 export const Navigation = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const content = useSiteContent();
   
   const scrollToSection = (id: string) => {
     // Only scroll if we're on the home page
@@ -136,7 +138,7 @@ export const Navigation = () => {
 
             {/* Location */}
             <a 
-              href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
+              href={content.maps_url}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -165,17 +167,17 @@ export const Navigation = () => {
             </Button>
 
             {/* Social media icons */}
-            <a href="https://www.facebook.com/events/581999524562667/?acontext=%7B%22event_action_history%22%3A%5B%7B%22surface%22%3A%22home%22%7D%2C%7B%22mechanism%22%3A%22search_results%22%2C%22surface%22%3A%22search%22%7D%5D%2C%22ref_notif_type%22%3Anull%7D" target="_blank" rel="noopener noreferrer">
+            <a href={content.facebook_url} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
                 <Facebook className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </a>
-            <a href="https://www.instagram.com/dagenikth/" target="_blank" rel="noopener noreferrer">
+            <a href={content.instagram_url} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
                 <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </a>
-            <a href="https://www.linkedin.com/company/dagen-i/?originalSubdomain=se" target="_blank" rel="noopener noreferrer">
+            <a href={content.linkedin_url} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -242,7 +244,7 @@ export const Navigation = () => {
                   <Button variant="ghost" className="w-full justify-start font-semibold">About Us</Button>
                 </Link>
                 <a 
-                  href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
+                  href={content.maps_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleLinkClick}

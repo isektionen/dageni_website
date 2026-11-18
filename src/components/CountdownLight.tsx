@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useSiteContent } from "@/lib/content";
 
 interface TimeLeft {
   days: number;
@@ -8,7 +9,9 @@ interface TimeLeft {
 }
 
 export const CountdownLight = () => {
-  const targetDate = useMemo(() => new Date("2027-02-12T10:00:00").getTime(), []);
+  // Event start is set under Settings & Links in the admin panel
+  const { eventDate } = useSiteContent();
+  const targetDate = eventDate.getTime();
   
   const calculateTimeLeft = useCallback((): TimeLeft => {
     const now = Date.now();

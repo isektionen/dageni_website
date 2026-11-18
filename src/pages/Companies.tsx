@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import exhibitorsImg from "@/assets/dagenipic2_optimized.jpg";
+import { lines, useSiteContent } from "@/lib/content";
 
 export default function Companies() {
   const { hash } = useLocation();
+  const content = useSiteContent();
   
   useEffect(() => {
     if (hash) {
@@ -29,7 +30,7 @@ export default function Companies() {
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
-            <img src={exhibitorsImg} alt="Exhibition booth" className="w-full h-full object-cover" />
+            <img src={content.img_companies_hero} alt="Exhibition booth" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
           
@@ -40,7 +41,7 @@ export default function Companies() {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Connect with Sweden's brightest engineering talent
+              {content.companies_hero_subtitle}
             </p>
           </div>
         </section>
@@ -64,46 +65,16 @@ export default function Companies() {
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-blue-600 mb-4">Standard Package</h3>
                       <p className="text-muted-foreground mb-4">
-                        Meet Industrial engineering & management students across all years and showcase what makes your company stand out.
+                        {content.companies_standard_intro}
                       </p>
                     </div>
                     <div className="space-y-3 text-sm text-muted-foreground">
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>A 2x2m Booth</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>One on-site business host</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Opportunity to book one-to-one student meetings</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Two Banquet tickets</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Access to the business lounge</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Four breakfast/lunch vouchers</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Placement on the photo wall</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Marketing on the Dagen I website and inside the company catalogue</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span>Electricity and Wi-Fi during the fair</span>
-                      </div>
+                      {lines(content.companies_standard_items).map((item) => (
+                        <div key={item} className="flex items-start space-x-2">
+                          <span className="text-blue-600 font-bold">•</span>
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -115,35 +86,21 @@ export default function Companies() {
                     <div className="text-center mb-6">
                       <h3 className="text-2xl font-bold text-yellow-600 mb-4">Premium Package</h3>
                       <p className="text-muted-foreground mb-4">
-                        With the Premium package, your company will get the chance to gain extra exposure and to increase students' awareness of what your company does and offers.
+                        {content.companies_premium_intro}
                       </p>
                       <p className="text-muted-foreground mb-4 text-sm font-medium">
                         The premium package includes everything in the Standard Package, but with:
                       </p>
                     </div>
                     <div className="space-y-3 text-sm text-muted-foreground">
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Event of your choice*</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>A 2x3m Booth</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Two business hosts</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>125% enhanced logo size on the photo wall</span>
-                      </div>
-                      <div className="flex items-start space-x-2">
-                        <span className="text-yellow-600 font-bold">•</span>
-                        <span>Premium-spot, by preference or priority allocation</span>
-                      </div>
+                      {lines(content.companies_premium_items).map((item) => (
+                        <div key={item} className="flex items-start space-x-2">
+                          <span className="text-yellow-600 font-bold">•</span>
+                          <span>{item}</span>
+                        </div>
+                      ))}
                       <div className="text-xs text-muted-foreground mt-4 italic">
-                        * Location of your choice, subject to availability and approval
+                        {content.companies_premium_footnote}
                       </div>
                     </div>
                   </div>
@@ -159,7 +116,7 @@ export default function Companies() {
                     </span>
                   </h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto text-center">
-                    Partner with Dagen I as either an exhibitor or sponsor to connect with Sweden's brightest engineering talent. Whether you want to showcase your company at our exhibition booths or support our mission through sponsorship, we offer flexible partnership packages tailored to your organization's goals and budget.
+                    {content.companies_partner_intro}
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -188,19 +145,19 @@ export default function Companies() {
                   <div className="flex flex-wrap justify-center gap-6 mb-8">
                     <div className="text-center">
                       <div className="text-4xl font-bold font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
-                        1000+
+                        {content.companies_stat_students}
                       </div>
                       <p className="text-sm text-muted-foreground">Students Reached</p>
                     </div>
                     <div className="text-center">
                       <div className="text-4xl font-bold font-display bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent mb-2">
-                        50+
+                        {content.companies_stat_partners}
                       </div>
                       <p className="text-sm text-muted-foreground">Company Partners</p>
                     </div>
                     <div className="text-center">
                       <div className="text-4xl font-bold font-display bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent mb-2">
-                        15+
+                        {content.companies_stat_years}
                       </div>
                       <p className="text-sm text-muted-foreground">Years of Impact</p>
                     </div>
@@ -214,7 +171,7 @@ export default function Companies() {
                     
                     <div className="space-y-4">
                       <Button size="lg" className="w-full max-w-md" asChild>
-                        <a href ="https://docs.google.com/forms/d/e/1FAIpQLSe9GKiRO2ZDBZz6A4gzzDZj8t6NppxQ4qAtMwMaTyBoFzo-Sg/viewform" target="_blank" rel="noopener noreferrer">
+                        <a href={content.partnership_form_url} target="_blank" rel="noopener noreferrer">
                           Apply for Partnership
                         </a>
                       </Button>
@@ -223,7 +180,7 @@ export default function Companies() {
                         Or contact us directly for detailed information:
                       </p>
                       <Button variant="outline" asChild>
-                        <a href="mailto:naringsliv@dageni.se?subject=Partnership%20interest">
+                        <a href={`mailto:${content.email_business}?subject=Partnership%20interest`}>
                           Email us
                         </a>
                       </Button>
@@ -242,12 +199,12 @@ export default function Companies() {
                 
                 <div className="text-center space-y-4">
                   <p className="text-muted-foreground leading-relaxed">
-                    Interested in participating in Dagen I 2027? We'd love to hear from you!
+                    {content.companies_get_in_touch}
                   </p>
                   
                   <div className="space-y-2">
                     <p className="text-lg font-semibold text-foreground">Contact us:</p>
-                    <p className="text-primary font-medium">naringsliv@dageni.se</p>
+                    <p className="text-primary font-medium">{content.email_business}</p>
                   </div>
                   
                   <p className="text-sm text-muted-foreground">

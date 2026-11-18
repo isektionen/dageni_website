@@ -3,10 +3,12 @@ import { Button } from "./ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { useSiteContent } from "@/lib/content";
 
 export const Footer = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const content = useSiteContent();
 
   useEffect(() => {
     // Check initial session
@@ -40,25 +42,23 @@ export const Footer = () => {
               </h2>
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Dagen I is where students meet their dream employers. Dagen I is also the place 
-              where your company has the opportunity to reach out and personally meet top 
-              students from Sweden's most popular Master of Science in Engineering program.
+              {content.footer_description}
             </p>
             
             {/* Social Media */}
             <div className="flex items-center space-x-3">
               <span className="text-sm font-medium text-foreground">Follow us:</span>
-              <a href="https://www.facebook.com/events/581999524562667/?acontext=%7B%22event_action_history%22%3A%5B%7B%22surface%22%3A%22home%22%7D%2C%7B%22mechanism%22%3A%22search_results%22%2C%22surface%22%3A%22search%22%7D%5D%2C%22ref_notif_type%22%3Anull%7D" target="_blank" rel="noopener noreferrer">
+              <a href={content.facebook_url} target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <Facebook className="h-4 w-4" />
                 </Button>
               </a>
-              <a href="https://www.instagram.com/dagenikth/" target="_blank" rel="noopener noreferrer">
+              <a href={content.instagram_url} target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <Instagram className="h-4 w-4" />
                 </Button>
               </a>
-              <a href="https://www.linkedin.com/company/dagen-i/?originalSubdomain=se" target="_blank" rel="noopener noreferrer">
+              <a href={content.linkedin_url} target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <Linkedin className="h-4 w-4" />
                 </Button>
@@ -71,23 +71,23 @@ export const Footer = () => {
             <h3 className="text-lg font-semibold font-display text-foreground">Get In Touch</h3>
             <div className="space-y-4">
               <a 
-                href="mailto:naringsliv@dageni.se" 
+                href={`mailto:${content.email_business}`} 
                 className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors group"
               >
                 <Mail className="h-4 w-4 group-hover:text-primary" />
                 <div>
                   <p className="text-sm font-medium">Business Inquiries</p>
-                  <p className="text-sm">naringsliv@dageni.se</p>
+                  <p className="text-sm">{content.email_business}</p>
                 </div>
               </a>
               <a 
-                href="mailto:projektledare@dageni.se" 
+                href={`mailto:${content.email_project}`} 
                 className="flex items-center space-x-3 text-muted-foreground hover:text-foreground transition-colors group"
               >
                 <Mail className="h-4 w-4 group-hover:text-primary" />
                 <div>
                   <p className="text-sm font-medium">Project Management</p>
-                  <p className="text-sm">projektledare@dageni.se</p>
+                  <p className="text-sm">{content.email_project}</p>
                 </div>
               </a>
             </div>
@@ -97,16 +97,16 @@ export const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-semibold font-display text-foreground">Visit Us</h3>
             <a 
-              href="https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu"
+              href={content.maps_url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start space-x-3 text-muted-foreground hover:text-foreground transition-colors group"
             >
               <MapPin className="h-4 w-4 mt-1 group-hover:text-primary" />
               <div>
-                <p className="text-sm font-medium">Nymble</p>
-                <p className="text-sm">Drottning Kristinas väg 15-19</p>
-                <p className="text-sm">Stockholm</p>
+                <p className="text-sm font-medium">{content.location_name}</p>
+                <p className="text-sm">{content.location_address}</p>
+                <p className="text-sm">{content.location_city}</p>
                 <p className="text-sm text-primary mt-1 group-hover:underline">Direction and Maps</p>
               </div>
             </a>
@@ -118,15 +118,15 @@ export const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-center sm:text-left">
               <p className="text-muted-foreground text-sm">
-                © 2027 Dagen I. All rights reserved.
+                © {content.year} Dagen I. All rights reserved.
               </p>
               <p className="text-muted-foreground/80 text-xs mt-1">
                 Developed by <a href="https://k43p5r.github.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Kasper Gundewall</a>
               </p>
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <span className="text-muted-foreground">February 12, 2027</span>
-              <span className="text-primary font-medium">Nymble, Stockholm</span>
+              <span className="text-muted-foreground">{content.dateLabel}</span>
+              <span className="text-primary font-medium">{content.location_name}, {content.location_city}</span>
               <button 
                 onClick={handleAdminClick}
                 className="text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors text-xs cursor-pointer"
