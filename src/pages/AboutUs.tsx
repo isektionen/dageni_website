@@ -76,7 +76,7 @@ const AboutUs = () => {
               {/* Team Members */}
               <div className="text-center mb-16">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display mb-5">
-                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Dagen I Committee
                   </span>
                 </h2>
@@ -108,7 +108,7 @@ const AboutUs = () => {
               {/* Mission Statement */}
               <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
-                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Our Mission
                   </span>
                 </h2>
@@ -126,7 +126,7 @@ const AboutUs = () => {
               {/* Call to Action */}
               <div className="text-center py-8">
                 <Link to="/">
-                  <Button size="lg" className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all">
                     Return to Homepage
                   </Button>
                 </Link>

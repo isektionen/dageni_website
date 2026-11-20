@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase, Company, Event } from '@/lib/supabase';
+import { compressImage } from '@/lib/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -86,7 +87,8 @@ const AdminDashboard = () => {
     }
   };
 
-  const uploadLogo = async (file: File): Promise<string> => {
+  const uploadLogo = async (original: File): Promise<string> => {
+    const file = await compressImage(original, 600);
     const fileExt = file.name.split('.').pop();
     const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
     const filePath = `${fileName}`;
@@ -193,7 +195,8 @@ const AdminDashboard = () => {
   };
 
   // Event CRUD functions
-  const uploadEventImage = async (file: File): Promise<string> => {
+  const uploadEventImage = async (original: File): Promise<string> => {
+    const file = await compressImage(original, 1600);
     const fileExt = file.name.split('.').pop();
     const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
     const filePath = `${fileName}`;
@@ -534,7 +537,7 @@ const AdminDashboard = () => {
                 {/* Exhibitors Section */}
                 <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                   <h2 className="text-2xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Exhibitors ({exhibitors.length})
                     </span>
                   </h2>
@@ -603,7 +606,7 @@ const AdminDashboard = () => {
                 {/* Sponsors Section */}
                 <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                   <h2 className="text-2xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Sponsors ({sponsors.length})
                     </span>
                   </h2>
@@ -672,7 +675,7 @@ const AdminDashboard = () => {
                 {/* Sustainability Partners Section */}
                 <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                   <h2 className="text-2xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                    <span className="text-accent">
                       Sustainability Partners ({sustainabilityPartners.length})
                     </span>
                   </h2>
@@ -741,7 +744,7 @@ const AdminDashboard = () => {
                 {/* Events Section */}
                 <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                   <h2 className="text-2xl font-bold mb-6">
-                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Events ({events.length})
                     </span>
                   </h2>

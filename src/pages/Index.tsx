@@ -1,4 +1,6 @@
 import { MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CountdownLight as Countdown } from "@/components/CountdownLight";
@@ -13,65 +15,46 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/5 to-secondary/10 animate-gradient-shift bg-200%" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(249,115,22,0.1),transparent_50%)]" />
-        
-        {/* Hero Image Overlay */}
-        <div className="absolute inset-0 opacity-5">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-primary text-primary-foreground">
+        {/* Background photo, toned down under the navy */}
+        <div className="absolute inset-0 opacity-10">
           <img src={content.img_home_hero} alt="" loading="lazy" className="w-full h-full object-cover" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
-          <div className="text-center space-y-6 sm:space-y-8 animate-fade-in pt-6 sm:pt-8 md:pt-10">
-            <div className="space-y-4">
-              <div id="location" className="flex items-center justify-center space-x-2 text-muted-foreground mb-4">
-                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-primary animate-pulse-glow" />
-                <span className="text-base sm:text-lg md:text-xl font-medium">{content.location_name}</span>
-              </div>
-              <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-display text-foreground/80 mb-4">
-                  {content.dateLabel}
-                </h2>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-display text-foreground/60">
-                  {content.timeLabel}
-                </p>
-              </div>
+          <div className="flex flex-col items-center text-center space-y-8 sm:space-y-10 animate-fade-in py-10">
+            <h1 className="sr-only">Dagen I {content.year}</h1>
+            <img
+              src={content.img_hero_logo}
+              alt="Dagen I"
+              loading="eager"
+              className="w-56 sm:w-72 md:w-96 h-auto"
+            />
+
+            <div className="space-y-2">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold font-display">
+                {content.dateLabel}
+              </p>
+              <p className="flex items-center justify-center gap-2 text-base sm:text-lg md:text-xl text-secondary">
+                <MapPin className="h-5 w-5" />
+                {content.location_name} · {content.timeLabel}
+              </p>
             </div>
 
-            <div className="py-2 sm:py-4">
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 font-medium uppercase tracking-wider">
-                Countdown to
-              </p>
-              
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-display mb-8">
-                <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient-shift bg-200%">
-                  Dagen I
-                </span>
-              </h1>
-              
-              {/* Dagen I Logo */}
-              <div className="flex justify-center mb-8 sm:mb-10">
-                <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl hover:shadow-glow transition-all duration-300">
-                  <img 
-                    src={content.img_logo} 
-                    alt="Dagen I Logo" 
-                    loading="eager"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <Countdown />
+            <Countdown />
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground px-8">
+                <a href={content.partnership_form_url} target="_blank" rel="noopener noreferrer">
+                  Exhibit at Dagen I
+                </a>
+              </Button>
+              <Button asChild size="lg" className="rounded-full bg-white hover:bg-white/90 text-primary px-8">
+                <Link to="/for-students">For Students</Link>
+              </Button>
             </div>
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* About Dagen I Section */}
@@ -79,7 +62,7 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-center">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="text-primary">
                 About Dagen I
               </span>
             </h2>

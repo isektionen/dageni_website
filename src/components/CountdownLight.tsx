@@ -39,40 +39,37 @@ export const CountdownLight = () => {
     return () => clearInterval(timer);
   }, [calculateTimeLeft]);
 
-  const TimeUnit = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center">
-      <div className="bg-card px-6 py-4 sm:px-8 sm:py-6 rounded-xl border">
-        <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display text-primary">
-          {String(value).padStart(2, "0")}
-        </span>
-      </div>
-      <span className="mt-3 text-sm sm:text-base md:text-lg font-medium text-muted-foreground uppercase tracking-wider">
-        {label}
-      </span>
-    </div>
-  );
+  const units = [
+    { value: timeLeft.days, label: "days" },
+    { value: timeLeft.hours, label: "hours" },
+    { value: timeLeft.minutes, label: "minutes" },
+    { value: timeLeft.seconds, label: "seconds" },
+  ];
 
   // Check if the event has started
-  const hasStarted = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+  const hasStarted = units.every((u) => u.value === 0);
 
   if (hasStarted) {
     return (
-      <div className="flex justify-center">
-        <div className="bg-card px-8 py-6 sm:px-12 sm:py-8 rounded-2xl border border-primary/40 shadow-lg">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent animate-gradient-shift bg-200%">
-            Dagen I has started!
-          </h2>
-        </div>
-      </div>
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold font-display">
+        Dagen I has started!
+      </p>
     );
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-      <TimeUnit value={timeLeft.days} label="Days" />
-      <TimeUnit value={timeLeft.hours} label="Hours" />
-      <TimeUnit value={timeLeft.minutes} label="Minutes" />
-      <TimeUnit value={timeLeft.seconds} label="Seconds" />
+    <div className="flex justify-center">
+      {units.map((unit, i) => (
+        <div
+          key={unit.label}
+          className={`flex flex-col items-center px-3 sm:px-6 md:px-8 ${i > 0 ? "border-l-2 border-accent" : ""}`}
+        >
+          <span className="text-3xl sm:text-5xl md:text-6xl font-semibold font-display tabular-nums">
+            {unit.value}
+          </span>
+          <span className="mt-1 text-xs sm:text-base text-secondary">{unit.label}</span>
+        </div>
+      ))}
     </div>
   );
 };

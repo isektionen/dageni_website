@@ -34,7 +34,7 @@ const AdminLogin = () => {
       <div className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 max-w-md">
           <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
-            <h1 className="text-3xl font-bold font-display mb-6 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold font-display mb-6 text-center text-primary">
               Admin Login
             </h1>
             

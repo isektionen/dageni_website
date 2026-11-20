@@ -26,7 +26,7 @@ export const TeamEditor = () => {
     setSaving(true);
 
     try {
-      const imageUrl = photoFile ? await uploadSiteAsset(photoFile, 'team') : formData.image_url;
+      const imageUrl = photoFile ? await uploadSiteAsset(photoFile, 'team', 600) : formData.image_url;
       const memberData = {
         role: formData.role,
         name: formData.name,

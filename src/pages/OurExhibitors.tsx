@@ -58,7 +58,7 @@ const OurExhibitors = () => {
         />
         <div className="flex-1">
           {isMainPartner && (
-            <span className="inline-block bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm md:text-base font-semibold px-4 py-1.5 rounded-full mb-3">
+            <span className="inline-block bg-accent text-accent-foreground text-sm md:text-base font-semibold px-4 py-1.5 rounded-full mb-3">
               Main Partner
             </span>
           )}
@@ -129,7 +129,7 @@ const OurExhibitors = () => {
                 {/* Exhibitors Section (including Main Partners) */}
                 <div>
                   <h2 className="text-3xl sm:text-4xl font-bold font-display mb-8 text-center">
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Exhibitors
                     </span>
                   </h2>
@@ -156,7 +156,7 @@ const OurExhibitors = () => {
                 {/* Call to Action */}
                 <div className="text-center py-8">
                   <Link to="/for-companies">
-                    <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all">
                       Interested in Exhibiting?
                     </Button>
                   </Link>

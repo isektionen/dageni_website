@@ -1,4 +1,4 @@
-import { Calendar, Facebook, Instagram, Linkedin, Menu, X } from "lucide-react";
+import { Instagram, Linkedin, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
@@ -32,11 +32,11 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <img 
-              src="/dageni-icon-32.png" 
+              src="/logo-navy.png" 
               alt="Dagen I" 
-              className="h-6 w-6 sm:h-8 sm:w-8 rounded-full object-cover"
+              className="h-8 sm:h-10 w-auto"
             />
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-primary">
               DAGEN I
             </h1>
           </Link>
@@ -167,11 +167,6 @@ export const Navigation = () => {
             </Button>
 
             {/* Social media icons */}
-            <a href={content.facebook_url} target="_blank" rel="noopener noreferrer">
-              <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
-                <Facebook className="h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
-            </a>
             <a href={content.instagram_url} target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-10 sm:w-10">
                 <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />

@@ -1,4 +1,4 @@
-import { Calendar, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, MapPin, Instagram, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -36,8 +36,8 @@ export const Footer = () => {
           {/* Main Description */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-2">
-              <Calendar className="h-8 w-8 text-primary" />
-              <h2 className="text-2xl font-bold font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <img src="/logo-navy.png" alt="Dagen I" className="h-10 w-auto" />
+              <h2 className="text-2xl font-bold font-display text-primary">
                 DAGEN I
               </h2>
             </div>
@@ -48,11 +48,6 @@ export const Footer = () => {
             {/* Social Media */}
             <div className="flex items-center space-x-3">
               <span className="text-sm font-medium text-foreground">Follow us:</span>
-              <a href={content.facebook_url} target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-8 w-8">
-                  <Facebook className="h-4 w-4" />
-                </Button>
-              </a>
               <a href={content.instagram_url} target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <Instagram className="h-4 w-4" />

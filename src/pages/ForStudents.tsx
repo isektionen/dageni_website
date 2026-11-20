@@ -1,4 +1,4 @@
-import { ArrowLeft, Users, Calendar, Briefcase, GraduationCap, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, Users, Calendar, Briefcase, GraduationCap, Download, ExternalLink, Leaf } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/Navigation";
@@ -88,14 +88,14 @@ const ForStudents = () => {
 
   const SponsorCard = ({ company }: { company: Company }) => (
     <div className="bg-card rounded-2xl p-6 border border-border/50 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-start gap-4 mb-4">
+      <div className="mb-4">
         <img 
           src={company.logo_url} 
           alt={`${company.name} logo`}
-          className="w-16 h-16 object-contain rounded bg-white p-2"
+          className="w-16 h-16 object-contain rounded bg-white p-2 mb-3"
         />
-        <div className="flex-1">
-          <h3 className="text-xl font-bold font-display mb-1">{company.name}</h3>
+        <div>
+          <h3 className="text-lg font-bold font-display leading-tight mb-1">{company.name}</h3>
           {company.website && (
             <a 
               href={company.website}
@@ -293,10 +293,9 @@ const ForStudents = () => {
 
               {/* Our Sustainability Partners Section */}
               <section id="our-sustainability-partners" className="scroll-mt-24">
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    Our Sustainability Partners
-                  </span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 flex items-center gap-3">
+                  <Leaf className="h-8 w-8 text-accent shrink-0" />
+                  <span className="text-accent">Our Sustainability Partners</span>
                 </h2>
                 
                 {loadingSustainabilityPartners ? (
@@ -320,7 +319,7 @@ const ForStudents = () => {
               {/* Contact Meetings */}
               <section id="contact-meetings" className="scroll-mt-24">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-6">
-                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Contact Meetings
                   </span>
                 </h2>
@@ -332,7 +331,7 @@ const ForStudents = () => {
                 {isOn(content.contact_meetings_open) && content.contact_meetings_url ? (
                   <div className="text-center p-4 bg-secondary/10 rounded-xl border border-secondary/20">
                     <p className="text-secondary font-medium mb-4">Apply now for contact meetings!</p>
-                    <Button asChild size="lg" className="bg-gradient-to-r from-secondary to-primary hover:from-secondary/90 hover:to-primary/90">
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                       <a href={content.contact_meetings_url} target="_blank" rel="noopener noreferrer">
                         Apply Here
                       </a>
@@ -349,7 +348,7 @@ const ForStudents = () => {
               <section id="become-a-host" className="scroll-mt-24">
                 <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
                   <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Become a Host for Dagen I
                     </span>
                   </h2>
@@ -371,7 +370,7 @@ const ForStudents = () => {
                     
                     {isOn(content.host_application_open) && content.host_application_url ? (
                       <div className="text-center">
-                        <Button asChild size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90">
+                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                           <a href={content.host_application_url} target="_blank" rel="noopener noreferrer">
                             Apply to Become a Host
                           </a>
@@ -389,7 +388,7 @@ const ForStudents = () => {
               {/* Call to Action */}
               <div className="text-center py-8">
                 <Link to="/">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg hover:shadow-glow transition-all">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-all">
                     Return to Homepage
                   </Button>
                 </Link>

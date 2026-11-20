@@ -43,6 +43,11 @@ export default function Companies() {
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
               {content.companies_hero_subtitle}
             </p>
+            <Button asChild size="lg" className="mt-8 rounded-full px-8">
+              <a href={content.partnership_form_url} target="_blank" rel="noopener noreferrer">
+                Apply to Exhibit
+              </a>
+            </Button>
           </div>
         </section>
 
@@ -54,16 +59,16 @@ export default function Companies() {
               {/* Exhibition Packages */}
               <section id="packages" className="scroll-mt-24">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-center mb-8">
-                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Exhibition Packages
                   </span>
                 </h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   {/* Standard Package */}
-                  <div className="bg-gradient-to-br from-blue-500/5 to-blue-600/10 rounded-2xl p-8 border border-blue-200/30">
+                  <div className="bg-card rounded-2xl p-8 border border-secondary">
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold text-blue-600 mb-4">Standard Package</h3>
+                      <h3 className="text-2xl font-bold text-accent mb-4">Standard Package</h3>
                       <p className="text-muted-foreground mb-4">
                         {content.companies_standard_intro}
                       </p>
@@ -71,7 +76,7 @@ export default function Companies() {
                     <div className="space-y-3 text-sm text-muted-foreground">
                       {lines(content.companies_standard_items).map((item) => (
                         <div key={item} className="flex items-start space-x-2">
-                          <span className="text-blue-600 font-bold">•</span>
+                          <span className="text-accent font-bold">•</span>
                           <span>{item}</span>
                         </div>
                       ))}
@@ -79,12 +84,12 @@ export default function Companies() {
                   </div>
 
                   {/* Premium Package */}
-                  <div className="bg-gradient-to-br from-gold-500/5 to-yellow-500/10 rounded-2xl p-8 border border-yellow-300/30 relative">
+                  <div className="bg-secondary/40 rounded-2xl p-8 border-2 border-primary relative">
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-semibold">PREMIUM</span>
+                      <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-semibold">PREMIUM</span>
                     </div>
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold text-yellow-600 mb-4">Premium Package</h3>
+                      <h3 className="text-2xl font-bold text-primary mb-4">Premium Package</h3>
                       <p className="text-muted-foreground mb-4">
                         {content.companies_premium_intro}
                       </p>
@@ -95,7 +100,7 @@ export default function Companies() {
                     <div className="space-y-3 text-sm text-muted-foreground">
                       {lines(content.companies_premium_items).map((item) => (
                         <div key={item} className="flex items-start space-x-2">
-                          <span className="text-yellow-600 font-bold">•</span>
+                          <span className="text-primary font-bold">•</span>
                           <span>{item}</span>
                         </div>
                       ))}
@@ -111,7 +116,7 @@ export default function Companies() {
               <section id="become-a-partner" className="scroll-mt-24">
                 <div className="bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-primary/20">
                   <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <span className="text-primary">
                       Become a Partner
                     </span>
                   </h2>
@@ -144,19 +149,19 @@ export default function Companies() {
 
                   <div className="flex flex-wrap justify-center gap-6 mb-8">
                     <div className="text-center">
-                      <div className="text-4xl font-bold font-display bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-2">
+                      <div className="text-4xl font-bold font-display text-primary mb-2">
                         {content.companies_stat_students}
                       </div>
                       <p className="text-sm text-muted-foreground">Students Reached</p>
                     </div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold font-display bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent mb-2">
+                      <div className="text-4xl font-bold font-display text-primary mb-2">
                         {content.companies_stat_partners}
                       </div>
                       <p className="text-sm text-muted-foreground">Company Partners</p>
                     </div>
                     <div className="text-center">
-                      <div className="text-4xl font-bold font-display bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent mb-2">
+                      <div className="text-4xl font-bold font-display text-primary mb-2">
                         {content.companies_stat_years}
                       </div>
                       <p className="text-sm text-muted-foreground">Years of Impact</p>
@@ -192,7 +197,7 @@ export default function Companies() {
               {/* Contact Information */}
               <div className="bg-gradient-to-br from-accent/5 via-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12 border border-accent/20">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6 text-center">
-                  <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Get In Touch
                   </span>
                 </h2>

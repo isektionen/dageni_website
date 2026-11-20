@@ -35,17 +35,15 @@ export const SectionCard = ({
         </div>
 
         <div className="relative p-6 sm:p-8">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-display mb-4 text-primary">
             {title}
           </h3>
           <p className="text-muted-foreground text-base sm:text-lg mb-6 leading-relaxed">
             {description}
           </p>
           <div
-            className={`inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r ${
-              gradient === "primary"
-                ? "from-primary to-accent"
-                : "from-secondary to-primary"
+            className={`inline-flex items-center px-6 py-3 rounded-lg ${
+              gradient === "primary" ? "bg-primary" : "bg-accent"
             } text-primary-foreground transition-all duration-300 shadow-lg group-hover:shadow-glow`}
           >
             Learn More

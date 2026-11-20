@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
+import { compressImage } from '@/lib/image';
 import homeHeroImg from '@/assets/dagenipic1_optimized.jpg';
 import companiesImg from '@/assets/dagenipic2_optimized.jpg';
 import exhibitorsImg from '@/assets/dagenipic3_optimized.jpg';
-import logoImg from '@/assets/dageni_profile_pic.jpg';
 import aboutUsImg from '@/assets/cover_all.jpg';
 
 export type ContentGroup = 'settings' | 'texts' | 'images';
@@ -32,7 +32,6 @@ export const CONTENT_FIELDS = [
   { key: 'location_city', label: 'City', group: 'settings', section: 'Location', type: 'text', default: 'Stockholm' },
   { key: 'maps_url', label: 'Google Maps link', group: 'settings', section: 'Location', type: 'url', default: 'https://www.google.com/maps/place/Nymble+-+Tekniska+H%C3%B6gskolans+K%C3%A5rhus/@59.3472957,18.0681431,17z/data=!3m2!4b1!5s0x465f9d6a8600d17b:0x3fc61d17004266c0!4m6!3m5!1s0x465f9d6a8e520c07:0x57fd5073e2923781!8m2!3d59.347293!4d18.070718!16s%2Fg%2F11dyjk6_q?entry=ttu' },
   // Settings: links
-  { key: 'facebook_url', label: 'Facebook', group: 'settings', section: 'Social media', type: 'url', default: 'https://www.facebook.com/events/581999524562667/' },
   { key: 'instagram_url', label: 'Instagram', group: 'settings', section: 'Social media', type: 'url', default: 'https://www.instagram.com/dagenikth/' },
   { key: 'linkedin_url', label: 'LinkedIn', group: 'settings', section: 'Social media', type: 'url', default: 'https://www.linkedin.com/company/dagen-i/?originalSubdomain=se' },
   { key: 'email_business', label: 'Business inquiries email', group: 'settings', section: 'Contact', type: 'email', default: 'naringsliv@dageni.se' },
@@ -78,7 +77,7 @@ export const CONTENT_FIELDS = [
   { key: 'footer_description', label: 'Footer description', group: 'texts', section: 'Other pages', type: 'textarea', default: "Dagen I is where students meet their dream employers. Dagen I is also the place where your company has the opportunity to reach out and personally meet top students from Sweden's most popular Master of Science in Engineering program." },
 
   // Images and files
-  { key: 'img_logo', label: 'Dagen I logo (home page)', group: 'images', section: 'Home', type: 'image', default: logoImg },
+  { key: 'img_hero_logo', label: 'Logo on the home page (transparent PNG, shown on navy)', group: 'images', section: 'Home', type: 'image', default: '/logo-white.png' },
   { key: 'img_home_hero', label: 'Home background', group: 'images', section: 'Home', type: 'image', default: homeHeroImg },
   { key: 'img_card_students', label: 'Card – For Students', group: 'images', section: 'Home', type: 'image', default: homeHeroImg },
   { key: 'img_card_companies', label: 'Card – For Companies', group: 'images', section: 'Home', type: 'image', default: companiesImg },
@@ -201,7 +200,8 @@ export const lines = (text: string) => text.split('\n').map((l) => l.trim()).fil
 
 export const isOn = (value: string) => value.trim().toLowerCase() === 'true';
 
-export const uploadSiteAsset = async (file: File, folder: string): Promise<string> => {
+export const uploadSiteAsset = async (original: File, folder: string, maxSize = 2400): Promise<string> => {
+  const file = await compressImage(original, maxSize);
   const fileExt = file.name.split('.').pop();
   const filePath = `${folder}/${Math.random().toString(36).substring(2)}.${fileExt}`;
 

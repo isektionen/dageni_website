@@ -202,7 +202,7 @@ const OurExhibitors = () => {
               {/* Announcement */}
               <div className="text-center py-16 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 rounded-3xl border border-primary/20">
                 <h2 className="text-3xl sm:text-4xl font-bold font-display mb-6">
-                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  <span className="text-primary">
                     Exhibitors Coming Soon
                   </span>
                 </h2>
